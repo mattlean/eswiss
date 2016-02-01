@@ -1,0 +1,38 @@
+/* MILES UI TABLE */
+.mui-table {
+	box-sizing: border-box;
+	margin-bottom: 16px;
+	border: 2px solid $miles-blue;
+	background-color: #FFF;
+	color: #444;
+}
+
+.mui-table thead {
+	color: #FEFEFE;
+}
+
+.mui-table thead tr {
+    background-color: $miles-blue;
+}
+
+.mui-table th, .mui-table td {
+	padding: 16px;
+}
+
+.mui-table tbody tr:nth-child(even) {
+	background-color: #EFEFEF;
+}
+
+.mui-table tbody tr:nth-child(odd) {
+	background-color: #FBFBFB;
+}
+
+.mui-table tbody tr:hover {
+	background-color: #FAFAFA;
+}
+
+.mui-table .mui-empty-table-msg {
+	padding: 100px 20px;
+	font-size: 1.2em;
+	text-align: center;
+}
