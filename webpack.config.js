@@ -10,6 +10,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, 'playground'),
+    publicPath: '/js/',
     port: 9001
   },
   resolve: {

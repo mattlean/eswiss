@@ -5,6 +5,6 @@ import TestComponent from './TestComponent';
 import '../playground/style.css';
 
 ReactDOM.render(
-  <TestComponent title="Hello world!!!" color="lime" />,
+  <TestComponent title="Hello world!!! Yes! Hi! Ello. Yay!" color="lime" />,
   document.getElementById('app')
 );
