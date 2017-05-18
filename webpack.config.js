@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: './src/script.js',
+  entry: './src/playground.js',
   devtool: 'eval',
   output: {
     path: path.join(__dirname, '/playground/js'),
