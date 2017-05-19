@@ -7,7 +7,9 @@
     "build-playground": "webpack",
     "watch-build-playground": "npm run build-playground -- --watch",
     "dev-playground": "webpack-dev-server",
-    "lint": "eslint src/**/*.js webpack.config.js"
+    "lint": "eslint src/**/*.js webpack.config.js",
+    "test:jest:watch": "jest --watch",
+    "test:jest": "jest"
   },
   "repository": {
     "type": "git",
@@ -27,12 +29,15 @@
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.1",
     "eslint": "^3.19.0",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-react": "^7.0.1",
+    "jest": "^20.0.3",
+    "react-test-renderer": "^15.5.4",
     "style-loader": "^0.17.0",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5"

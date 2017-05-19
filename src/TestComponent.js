@@ -7,6 +7,7 @@ class TestComponent extends React.Component {
       <h1 style={ style }>
         { this.props.title }
       </h1>
+      <small>Lorem Ipsum</small>
     </div>;
   }
 }
