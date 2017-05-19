@@ -1,16 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Search snapshot test 1`] = `
-<div>
-  <h1
-    style={
-      Object {
-        "color": undefined,
-      }
+exports[`Empty TestComponent snapshot 1`] = `
+<p
+  style={
+    Object {
+      "color": undefined,
     }
-  />
-  <small>
-    Lorem Ipsum
-  </small>
-</div>
+  }
+/>
+`;
+
+exports[`TestComponent with text & color snapshot 1`] = `
+<p
+  style={
+    Object {
+      "color": "rebeccapurple",
+    }
+  }
+>
+  Bob Ross is awesome
+</p>
+`;
+
+exports[`TestComponent with text snapshot 1`] = `
+<p
+  style={
+    Object {
+      "color": undefined,
+    }
+  }
+>
+  Blah blah blah!!
+</p>
 `;
