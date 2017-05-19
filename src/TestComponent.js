@@ -5,6 +5,7 @@ class TestComponent extends React.Component {
     const style = {color: this.props.color};
     return <p style={ style }>
       { this.props.text }
+      <span>i am ninja</span>
     </p>;
   }
 }

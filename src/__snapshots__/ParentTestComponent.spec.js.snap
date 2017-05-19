@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ParentTestComponent snapshot 1`] = `
+exports[`Empty ParentTestComponent snapshot 1`] = `
 <div>
   <h1
     style={
@@ -11,14 +11,9 @@ exports[`ParentTestComponent snapshot 1`] = `
   >
     HELLO WORLD!
   </h1>
-  <p
-    style={
-      Object {
-        "color": "blue",
-      }
-    }
-  >
-    Lorem Ipsum
-  </p>
+  <TestComponent
+    color="blue"
+    text="Lorem Ipsum"
+  />
 </div>
 `;

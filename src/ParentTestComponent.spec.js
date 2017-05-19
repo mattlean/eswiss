@@ -1,9 +1,10 @@
 import React from 'react';
 import ParentTestComponent from './ParentTestComponent';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
+import { shallowToJson } from 'enzyme-to-json';
 
-test('ParentTestComponent snapshot', () => {
-  const component = renderer.create(<ParentTestComponent />);
-  const tree = component.toJSON();
+test('Empty ParentTestComponent snapshot', () => {
+  const component = shallow(<ParentTestComponent />);
+  const tree = shallowToJson(component);
   expect(tree).toMatchSnapshot();
 });

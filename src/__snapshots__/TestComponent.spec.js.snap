@@ -7,7 +7,11 @@ exports[`Empty TestComponent snapshot 1`] = `
       "color": undefined,
     }
   }
-/>
+>
+  <span>
+    i am ninja
+  </span>
+</p>
 `;
 
 exports[`TestComponent with text & color snapshot 1`] = `
@@ -19,6 +23,9 @@ exports[`TestComponent with text & color snapshot 1`] = `
   }
 >
   Bob Ross is awesome
+  <span>
+    i am ninja
+  </span>
 </p>
 `;
 
@@ -31,5 +38,8 @@ exports[`TestComponent with text snapshot 1`] = `
   }
 >
   Blah blah blah!!
+  <span>
+    i am ninja
+  </span>
 </p>
 `;
