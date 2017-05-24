@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/IsaacLean/bolt-ui#readme",
   "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
