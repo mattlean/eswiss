@@ -1,7 +1,7 @@
 {
   "name": "eswiss",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "cross-env BABEL_ENV=production babel src -d dist",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
@@ -20,6 +20,11 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
   },
   "browserslist": {
     "production": [
@@ -34,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
@@ -41,6 +47,13 @@
     "@storybook/addons": "^5.3.18",
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.18",
+    "auto": "^9.25.2",
+    "cross-env": "^7.0.2",
     "prettier": "^2.0.2"
-  }
+  },
+  "description": "A design system built upon Swiss design principles",
+  "main": "dist/index.js",
+  "repository": "https://github.com/mattlean/eswiss.git",
+  "author": "Matthew Lean <matt@mattlean.com>",
+  "license": "MIT"
 }
