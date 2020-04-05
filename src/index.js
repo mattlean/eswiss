@@ -1,3 +1,3 @@
-import * as components from './components'
+import { Button } from './components'
 
-export { components }
+export { Button }
