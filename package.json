@@ -11,13 +11,14 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "cross-env BABEL_ENV=production babel src -d dist",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "release": "auto shipit"
+    "chromatic": "chromatic --project-token=uhvrpqxd9t",
+    "release": "auto shipit",
+    "start": "react-scripts start",
+    "storybook": "start-storybook -p 9009 -s public",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,7 +51,8 @@
     "@storybook/react": "^5.3.18",
     "auto": "^9.25.2",
     "cross-env": "^7.0.2",
-    "prettier": "^2.0.2"
+    "prettier": "^2.0.2",
+    "storybook-chromatic": "^4.0.2"
   },
   "description": "A design system built upon Swiss design principles",
   "main": "dist/index.js",
