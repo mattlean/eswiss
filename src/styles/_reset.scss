@@ -1,0 +1,47 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+$default-font-size: 16px;
+
+body {
+  font: $default-font-size 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.25em;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+figure {
+  margin: 0;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+dl,
+dd {
+  margin: 0;
+}
+
+button {
+  padding: 0;
+}

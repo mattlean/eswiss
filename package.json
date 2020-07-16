@@ -14,6 +14,7 @@
     "build": "cross-env BABEL_ENV=production babel src -d dist",
     "build-storybook": "build-storybook -s public",
     "chromatic": "chromatic --project-token=uhvrpqxd9t",
+    "lint": "eslint --ext .js,.json,.jsx src/",
     "release": "auto shipit",
     "start": "react-scripts start",
     "storybook": "start-storybook -p 9009 -s public",
@@ -21,7 +22,13 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "eslint:recommended",
+      "plugin:prettier/recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended"
+    ]
   },
   "babel": {
     "presets": [
@@ -45,13 +52,19 @@
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
+    "@storybook/addon-storyshots": "^5.3.19",
     "@storybook/addon-storysource": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.18",
     "auto": "^9.25.2",
     "cross-env": "^7.0.2",
-    "prettier": "^2.0.2",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "prettier": "^2.0.5",
+    "react-test-renderer": "^16.13.1",
     "storybook-chromatic": "^4.0.2"
   },
   "description": "A design system built upon Swiss design principles",

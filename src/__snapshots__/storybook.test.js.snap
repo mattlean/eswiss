@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Button Default 1`] = `
+<input
+  onClick={[Function]}
+  type="button"
+  value="Lorem Ipsum"
+/>
+`;
+
+exports[`Storyshots Modal Default 1`] = `
+<div>
+  Test
+</div>
+`;
