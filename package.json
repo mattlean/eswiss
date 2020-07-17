@@ -14,13 +14,15 @@
     "build": "cross-env BABEL_ENV=production babel src -d dist",
     "build-storybook": "build-storybook -s public",
     "chromatic": "chromatic",
+    "eject": "react-scripts eject",
     "format": "prettier --write src/",
-    "lint": "eslint --ext .js,.json,.jsx src/",
+    "lint": "yarn lint:styles; yarn lint:js",
+    "lint:js": "eslint --ext .js,.json,.jsx src/",
+    "lint:styles": "stylelint \"src/**/*.scss\"",
     "release": "auto shipit",
     "start": "react-scripts start",
     "storybook": "start-storybook -p 9009 -s public",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
