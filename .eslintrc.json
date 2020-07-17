@@ -3,10 +3,9 @@
     "react-app",
     "eslint:recommended",
     "plugin:prettier/recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react/recommended"
   ],
   "rules": {
-    "no-console": "error"
+    "no-console": "warn"
   }
 }
