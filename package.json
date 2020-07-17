@@ -13,7 +13,7 @@
   "scripts": {
     "build": "cross-env BABEL_ENV=production babel src -d dist",
     "build-storybook": "build-storybook -s public",
-    "chromatic": "chromatic --project-token=uhvrpqxd9t",
+    "chromatic": "chromatic",
     "lint": "eslint --ext .js,.json,.jsx src/",
     "release": "auto shipit",
     "start": "react-scripts start",
@@ -65,7 +65,10 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "prettier": "^2.0.5",
     "react-test-renderer": "^16.13.1",
-    "storybook-chromatic": "^4.0.2"
+    "sass": "^1.26.10",
+    "storybook-chromatic": "^4.0.2",
+    "stylelint": "^13.6.1",
+    "stylelint-config-sass-guidelines": "^7.0.0"
   },
   "description": "A design system built upon Swiss design principles",
   "main": "dist/index.js",

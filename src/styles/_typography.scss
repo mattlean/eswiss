@@ -1,0 +1,25 @@
+@use './size';
+
+.heading1 {
+  font-size: size.$size-96;
+}
+
+.heading2 {
+  font-size: size.$size-64;
+}
+
+.heading3 {
+  font-size: size.$size-48;
+}
+
+.heading4 {
+  font-size: size.$size-32;
+}
+
+.heading5 {
+  font-size: size.$size-24;
+}
+
+.heading6 {
+  font-size: size.$size-16;
+}

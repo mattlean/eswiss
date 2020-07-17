@@ -10,3 +10,9 @@ export default {
 export const Default = () => (
   <Button onClick={action('clicked')}>Lorem Ipsum</Button>
 )
+
+export const Outline = () => (
+  <Button outline onClick={action('clicked')}>
+    Lorem Ipsum
+  </Button>
+)

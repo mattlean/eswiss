@@ -1,15 +1,28 @@
+@use './color';
+@use './size';
+
 *,
 *::after,
 *::before {
   box-sizing: border-box;
 }
 
-$default-font-size: 16px;
+$default-font-size: size.$size-16;
+$default-font-color: color.$primary;
 
 body {
-  font: $default-font-size 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: $default-font-color;
+  font: normal $default-font-size 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.25em;
   margin: 0;
+}
+
+button {
+  background-color: unset;
+  border: 0;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -20,6 +33,7 @@ h5,
 h6 {
   font-weight: bold;
   margin: 0;
+  padding: 0;
 }
 
 p {
@@ -27,21 +41,15 @@ p {
   margin-bottom: 1rem;
 }
 
-figure {
-  margin: 0;
-}
-
+a,
+article,
+aside,
+dd,
+dl,
+figure,
 ol,
+section,
 ul {
   margin: 0;
-  padding: 0;
-}
-
-dl,
-dd {
-  margin: 0;
-}
-
-button {
   padding: 0;
 }
