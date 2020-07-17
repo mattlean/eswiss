@@ -1,7 +1,7 @@
 import React from 'react'
 import './_index.scss'
 
-const Button = ({ children, className, onClick, outline }) => {
+const Btn = ({ children, className, onClick, outline }) => {
   let c = 'btn'
 
   if (outline) c += ' outline'
@@ -14,4 +14,4 @@ const Button = ({ children, className, onClick, outline }) => {
   )
 }
 
-export default Button
+export default Btn
