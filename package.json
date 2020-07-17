@@ -11,16 +11,17 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "build": "cross-env BABEL_ENV=production babel src -d dist",
+    "build": "cross-env BABEL_ENV=production babel src --extensions \".ts,.tsx\" --ignore \"src/**/*.d.ts\",\"src/**/*.stories.tsx\",\"src/**/*.test.ts\" -s inline -d dist",
     "build-storybook": "build-storybook -s public",
     "chromatic": "chromatic",
-    "eject": "react-scripts eject",
+    "cra-build": "react-scripts build",
+    "cra-start": "react-scripts start",
+    "cra-eject": "react-scripts eject",
     "format": "prettier --write src/",
     "lint": "yarn lint:styles; yarn lint:js",
     "lint:js": "eslint --ext .js,.json,.jsx,.ts,.tsx src/",
     "lint:styles": "stylelint \"src/**/*.scss\"",
     "release": "auto shipit",
-    "start": "react-scripts start",
     "storybook": "start-storybook -p 9009 -s public",
     "test": "react-scripts test"
   },
