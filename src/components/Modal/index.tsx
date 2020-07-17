@@ -1,4 +1,4 @@
-import React, { MouseEvent, ReactNode, useState } from 'react'
+import React, { MouseEvent, ReactNode } from 'react'
 import './_index.scss'
 
 interface Props {
