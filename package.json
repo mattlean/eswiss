@@ -11,7 +11,7 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "build": "cross-env BABEL_ENV=production babel src --extensions \".ts,.tsx\" --ignore \"src/**/*.d.ts\",\"src/**/*.stories.tsx\",\"src/**/*.test.ts\" -s inline -d dist",
+    "build": "gulp",
     "build-storybook": "build-storybook -s public",
     "chromatic": "chromatic",
     "cra-build": "react-scripts build",
@@ -19,8 +19,8 @@
     "cra-eject": "react-scripts eject",
     "format": "prettier --write src/",
     "lint": "yarn lint:styles; yarn lint:js",
-    "lint:js": "eslint --ext .js,.json,.jsx,.ts,.tsx src/",
-    "lint:styles": "stylelint \"src/**/*.scss\"",
+    "lint:js": "eslint --ext .js,.json,.jsx,.ts,.tsx src/ gulpfile.js",
+    "lint:styles": "stylelint \"src/**/*.{css,scss}\"",
     "release": "auto shipit",
     "storybook": "start-storybook -p 9009 -s public",
     "test": "react-scripts test"
@@ -69,8 +69,11 @@
     "@types/react-dom": "^16.9.8",
     "auto": "^9.25.2",
     "cross-env": "^7.0.2",
+    "del": "^5.1.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1",
     "prettier": "^2.0.5",
     "react-test-renderer": "^16.13.1",
     "sass": "^1.26.10",
