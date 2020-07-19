@@ -3,19 +3,30 @@ import './_index.scss'
 
 interface Props {
   children: ReactNode
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void
+  className?: string
+  onClose?: (event?: MouseEvent<HTMLButtonElement>) => void
 }
 
 /**
  * Modal
+ * @prop {ReactNode} [children] React component children
+ * @prop {string} [className] CSS class attribute value to append to default value
+ * @prop {(event?: MouseEvent<HTMLButtonElement>) => void} [onClose] Function to run when click event is triggered
  */
-const Modal = ({ children, onClick }: Props) => (
-  <div className="modal-area">
-    <div className="modal">
-      {children}
-      <button className="modal-close">X</button>
+const Modal = ({ children, className, onClose }: Props) => {
+  let c = 'modal-area'
+  if (className) c += ` ${className}`
+
+  return (
+    <div className={c}>
+      <div className="modal">
+        {children}
+        <button type="button" className="modal-close" onClick={onClose}>
+          X
+        </button>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default Modal
