@@ -12,6 +12,7 @@ const compileTS = () =>
     '!src/**/*.d.ts',
     '!src/**/*.stories.tsx',
     '!src/**/*.test.ts',
+    '!src/setupTests.ts',
   ])
     .pipe(tsProject())
     .pipe(dest('dist'))

@@ -3,12 +3,18 @@
   "version": "0.0.3",
   "private": false,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.1",
-    "@testing-library/react": "^10.4.7",
-    "@testing-library/user-event": "^12.0.11",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "sass": "^1.26.10",
+    "typescript": "~3.7.2"
   },
   "scripts": {
     "build": "gulp",
@@ -17,7 +23,7 @@
     "cra-build": "react-scripts build",
     "cra-start": "react-scripts start",
     "cra-eject": "react-scripts eject",
-    "format": "prettier --write src/",
+    "format": "prettier --write src/ gulpfile.js",
     "lint": "yarn lint:styles; yarn lint:js",
     "lint:js": "eslint --ext .js,.json,.jsx,.ts,.tsx src/ gulpfile.js",
     "lint:styles": "stylelint \"src/**/*.{css,scss}\"",
@@ -28,18 +34,14 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "eslint:recommended",
-      "plugin:prettier/recommended",
-      "plugin:react/recommended"
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
     ],
     "rules": {
-      "no-console": "error"
+      "prettier/prettier": "warn"
     }
-  },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
   },
   "browserslist": {
     "production": [
@@ -54,7 +56,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-knobs": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
@@ -63,12 +64,7 @@
     "@storybook/addons": "^5.3.19",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^5.3.19",
-    "@types/jest": "^26.0.5",
-    "@types/node": "^14.0.23",
-    "@types/react": "^16.9.43",
-    "@types/react-dom": "^16.9.8",
     "auto": "^9.47.0",
-    "cross-env": "^7.0.2",
     "del": "^5.1.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -76,11 +72,10 @@
     "gulp-typescript": "^6.0.0-alpha.1",
     "prettier": "^2.0.5",
     "react-test-renderer": "^16.13.1",
-    "sass": "^1.26.10",
     "storybook-chromatic": "^4.0.2",
     "stylelint": "^13.6.1",
-    "stylelint-config-sass-guidelines": "^7.0.0",
-    "typescript": "^3.9.7"
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^20.0.0"
   },
   "description": "A design system built upon Swiss design principles",
   "main": "dist/index.js",
