@@ -1,10 +1,12 @@
 {
   "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "plugins": ["stylelint-order"],
   "rules": {
     "at-rule-no-unknown": [
       true,
       { "ignoreAtRules": ["extend", "include", "mixin", "use"] }
     ],
+    "order/properties-alphabetical-order": true,
     "value-keyword-case": ["lower", { "ignoreProperties": "/font/" }]
   }
 }
