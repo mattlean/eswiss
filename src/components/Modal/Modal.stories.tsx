@@ -44,14 +44,25 @@ export const HeadingAndText = () => (
 )
 
 const CompositeBtnAndModal = () => {
+  const [focusEleOnClose, setFocusEleOnClose] = useState<HTMLElement>()
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <>
-      <Btn type="button" onClick={() => setIsOpen(true)}>
+      <Btn
+        type="button"
+        onClick={() => {
+          setFocusEleOnClose(document.activeElement as HTMLElement)
+          setIsOpen(true)
+        }}
+      >
         {text('Button Text', 'Open Modal')}
       </Btn>
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+      <Modal
+        focusEleOnClose={focusEleOnClose}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      >
         <h1 className="modal-heading heading4">
           {text('Modal Heading Text', 'Lorem Ipsum')}
         </h1>
