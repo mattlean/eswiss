@@ -1,17 +1,22 @@
-.modal-area {
+.modal-overlay {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.25);
-  display: flex;
+  display: none;
   height: 100vh;
   justify-content: center;
   left: 0;
   position: fixed;
   top: 0;
   width: 100vw;
+
+  &.modal-open {
+    display: flex;
+  }
 }
 
 .modal {
   background-color: #fff;
+  display: none;
   padding: 2rem;
   position: relative;
   width: 500px;
@@ -42,4 +47,8 @@
     right: 2rem;
     top: 1.8rem;
   }
+}
+
+.modal-open > .modal {
+  display: block;
 }

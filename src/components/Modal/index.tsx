@@ -4,6 +4,7 @@ import './_index.scss'
 interface Props {
   children: ReactNode
   className?: string
+  isOpen?: boolean
   onClose?: (event?: MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -11,10 +12,12 @@ interface Props {
  * Modal
  * @prop {ReactNode} [children] React component children
  * @prop {string} [className] CSS class attribute value to append to default value
- * @prop {(event?: MouseEvent<HTMLButtonElement>) => void} [onClose] Function to run when click event is triggered
+ * @prop {boolean} [isOpen] Unhide modal if true
+ * @prop {(event?: MouseEvent<HTMLButtonElement>) => void} [onClose] Function to run when close event is triggered
  */
-const Modal = ({ children, className, onClose }: Props) => {
-  let c = 'modal-area'
+const Modal = ({ children, className, isOpen, onClose }: Props) => {
+  let c = 'modal-overlay'
+  if (isOpen) c += ' modal-open'
   if (className) c += ` ${className}`
 
   return (

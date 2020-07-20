@@ -4,6 +4,7 @@ exports[`Storyshots Button Default 1`] = `
 <button
   className="btn"
   onClick={[Function]}
+  type="button"
 >
   Lorem Ipsum
 </button>
@@ -13,19 +14,19 @@ exports[`Storyshots Button Outline 1`] = `
 <button
   className="btn outline"
   onClick={[Function]}
+  type="button"
 >
   Lorem Ipsum
 </button>
 `;
 
-exports[`Storyshots Modal Default 1`] = `
+exports[`Storyshots Modal Body Text 1`] = `
 <div
-  className="modal-area"
+  className="modal-overlay modal-open"
 >
-  <div
+  <section
     className="modal"
   >
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue enim ac nibh dictum, eu hendrerit enim malesuada. Vivamus et magna dignissim ipsum viverra pretium quis interdum dui. Proin eget rhoncus arcu, ut feugiat est. Integer eget nulla sed orci gravida aliquet. Sed a luctus metus, ac porta ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non vestibulum quam. Vivamus porta vulputate ultrices. Ut et congue purus. Sed id tortor et sem cursus aliquet sed eget nibh. Sed scelerisque quam eleifend dolor pellentesque, eget ultricies justo aliquam. Praesent eu tortor sed diam dignissim accumsan. Cras sit amet ex mi.
     <button
       className="modal-close"
       onClick={[Function]}
@@ -33,6 +34,109 @@ exports[`Storyshots Modal Default 1`] = `
     >
       X
     </button>
-  </div>
+    <section
+      className="modal-content"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue enim ac nibh dictum, eu hendrerit enim malesuada. Vivamus et magna dignissim ipsum viverra pretium quis interdum dui. Proin eget rhoncus arcu, ut feugiat est. Integer eget nulla sed orci gravida aliquet. Sed a luctus metus, ac porta ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non vestibulum quam. Vivamus porta vulputate ultrices. Ut et congue purus. Sed id tortor et sem cursus aliquet sed eget nibh. Sed scelerisque quam eleifend dolor pellentesque, eget ultricies justo aliquam. Praesent eu tortor sed diam dignissim accumsan. Cras sit amet ex mi.
+      </p>
+    </section>
+  </section>
+</div>
+`;
+
+exports[`Storyshots Modal Btn And Modal 1`] = `
+Array [
+  <button
+    className="btn"
+    onClick={[Function]}
+    type="button"
+  >
+    Open Modal
+  </button>,
+  <div
+    className="modal-overlay"
+  >
+    <section
+      className="modal"
+    >
+      <button
+        className="modal-close"
+        onClick={[Function]}
+        type="button"
+      >
+        X
+      </button>
+      <section
+        className="modal-content"
+      >
+        <h1
+          className="modal-heading heading4"
+        >
+          Lorem Ipsum
+        </h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue enim ac nibh dictum, eu hendrerit enim malesuada. Vivamus et magna dignissim ipsum viverra pretium quis interdum dui. Proin eget rhoncus arcu, ut feugiat est. Integer eget nulla sed orci gravida aliquet. Sed a luctus metus, ac porta ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non vestibulum quam. Vivamus porta vulputate ultrices. Ut et congue purus. Sed id tortor et sem cursus aliquet sed eget nibh. Sed scelerisque quam eleifend dolor pellentesque, eget ultricies justo aliquam. Praesent eu tortor sed diam dignissim accumsan. Cras sit amet ex mi.
+        </p>
+      </section>
+    </section>
+  </div>,
+]
+`;
+
+exports[`Storyshots Modal Heading 1`] = `
+<div
+  className="modal-overlay modal-open"
+>
+  <section
+    className="modal"
+  >
+    <button
+      className="modal-close"
+      onClick={[Function]}
+      type="button"
+    >
+      X
+    </button>
+    <section
+      className="modal-content"
+    >
+      <h1
+        className="modal-heading heading4"
+      >
+        Lorem Ipsum
+      </h1>
+    </section>
+  </section>
+</div>
+`;
+
+exports[`Storyshots Modal Heading And Text 1`] = `
+<div
+  className="modal-overlay modal-open"
+>
+  <section
+    className="modal"
+  >
+    <button
+      className="modal-close"
+      onClick={[Function]}
+      type="button"
+    >
+      X
+    </button>
+    <section
+      className="modal-content"
+    >
+      <h1
+        className="modal-heading heading4"
+      >
+        Lorem Ipsum
+      </h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue enim ac nibh dictum, eu hendrerit enim malesuada. Vivamus et magna dignissim ipsum viverra pretium quis interdum dui. Proin eget rhoncus arcu, ut feugiat est. Integer eget nulla sed orci gravida aliquet. Sed a luctus metus, ac porta ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non vestibulum quam. Vivamus porta vulputate ultrices. Ut et congue purus. Sed id tortor et sem cursus aliquet sed eget nibh. Sed scelerisque quam eleifend dolor pellentesque, eget ultricies justo aliquam. Praesent eu tortor sed diam dignissim accumsan. Cras sit amet ex mi.
+      </p>
+    </section>
+  </section>
 </div>
 `;
