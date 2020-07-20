@@ -19,12 +19,12 @@ const Modal = ({ children, className, onClose }: Props) => {
 
   return (
     <div className={c}>
-      <div className="modal">
-        {children}
+      <section className="modal">
         <button type="button" className="modal-close" onClick={onClose}>
           X
         </button>
-      </div>
+        <section className="modal-content">{children}</section>
+      </section>
     </div>
   )
 }

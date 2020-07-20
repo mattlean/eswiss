@@ -35,13 +35,7 @@
     "extends": [
       "react-app",
       "prettier"
-    ],
-    "plugins": [
-      "prettier"
-    ],
-    "rules": {
-      "prettier/prettier": "warn"
-    }
+    ]
   },
   "browserslist": {
     "production": [
@@ -67,7 +61,6 @@
     "auto": "^9.47.0",
     "del": "^5.1.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
     "gulp": "^4.0.2",
     "gulp-typescript": "^6.0.0-alpha.1",
     "prettier": "^2.0.5",
