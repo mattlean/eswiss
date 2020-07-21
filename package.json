@@ -65,7 +65,7 @@
     "@storybook/addons": "^5.3.19",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^5.3.19",
-    "auto": "^9.47.0",
+    "auto": "^9.47.1",
     "del": "^5.1.0",
     "eslint-config-prettier": "^6.11.0",
     "gulp": "^4.0.2",
@@ -83,5 +83,11 @@
   "main": "dist/index.js",
   "repository": "https://github.com/mattlean/eswiss.git",
   "author": "Matthew Lean <matt@mattlean.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "auto": {
+    "plugins": [
+      "npm"
+    ],
+    "onlyPublishWithReleaseLabel": true
+  }
 }
