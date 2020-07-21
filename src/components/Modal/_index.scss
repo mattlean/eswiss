@@ -24,6 +24,13 @@ body.modal-open {
   position: relative;
   width: 500px;
 
+  &.modal-center {
+    left: 50%;
+    margin: 2rem;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   > .modal-content {
     > .modal-heading {
       margin-bottom: 2rem;

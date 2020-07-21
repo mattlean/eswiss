@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import { useViewportHeight } from '../../util'
 import './_index.scss'
 
 export interface Props {
@@ -119,7 +120,7 @@ const Modal = ({
 
   // Setup keyboard tab trap, tabNavStart & tabNavEnd
   useEffect(() => {
-    if (modalEle.current) {
+    if (modalEle && modalEle.current) {
       /**
        * Setup keyboard tab trap
        * @param {KeyboardEvent} e Keyboard event object
@@ -191,6 +192,18 @@ const Modal = ({
       }
     }
   }, [closeOnOverlayClick, hideEleWithAria]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Apply modal-center CSS class if modal shorter than viewport height
+  const viewportHeight = useViewportHeight()
+  useEffect(() => {
+    if (modalEle && modalEle.current) {
+      if (modalEle.current.offsetHeight < viewportHeight) {
+        modalEle.current.classList.add('modal-center')
+      } else {
+        modalEle.current.classList.remove('modal-center')
+      }
+    }
+  }, [viewportHeight])
 
   // Apply CSS class names
   let mc = 'modal'
