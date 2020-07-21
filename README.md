@@ -1,5 +1,5 @@
 **THIS PROJECT IS CURRENTLY UNSTABLE! USE AT YOUR OWN RISK!**
 
-# eswiss
+# eswiss &middot; [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mattlean/eswiss/blob/master/LICENSE) [![npm](https://img.shields.io/npm/v/eswiss.svg?colorB=brightgreen)](https://npmjs.com/package/eswiss) [![Node.js CI](https://github.com/mattlean/eswiss/workflows/Node.js%20CI/badge.svg)](https://github.com/mattlean/eswiss/actions)
 
-A design system built upon Swiss design principles.
+**eswiss** is design system built upon principles from the Swiss design & International Typographic Style movements.
