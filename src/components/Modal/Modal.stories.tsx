@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { action } from '@storybook/addon-actions'
 import { text, withKnobs } from '@storybook/addon-knobs'
 import Btn from '../Btn'
@@ -46,21 +46,30 @@ export const HeadingAndText = () => (
 const CompositeBtnAndModal = () => {
   const [focusEleOnClose, setFocusEleOnClose] = useState<HTMLElement>()
   const [isOpen, setIsOpen] = useState(false)
+  const contentEle = useRef<HTMLDivElement>(null)
+
+  let currContentEle
+  if (contentEle && contentEle.current) {
+    currContentEle = contentEle.current
+  }
 
   return (
     <>
-      <Btn
-        type="button"
-        onClick={() => {
-          setFocusEleOnClose(document.activeElement as HTMLElement)
-          setIsOpen(true)
-        }}
-      >
-        {text('Button Text', 'Open Modal')}
-      </Btn>
+      <div ref={contentEle} id="content">
+        <Btn
+          type="button"
+          onClick={() => {
+            setFocusEleOnClose(document.activeElement as HTMLElement)
+            setIsOpen(true)
+          }}
+        >
+          {text('Button Text', 'Open Modal')}
+        </Btn>
+      </div>
       <Modal
         closeOnOverlayClick={true}
         focusEleOnClose={focusEleOnClose}
+        hideEleWithAria={currContentEle}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
       >

@@ -34,7 +34,11 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "prettier"
+      "prettier",
+      "plugin:jsx-a11y/recommended"
+    ],
+    "plugins": [
+      "jsx-a11y"
     ],
     "rules": {
       "no-console": "warn"

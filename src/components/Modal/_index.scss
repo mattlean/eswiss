@@ -18,7 +18,11 @@ body.modal-open {
 }
 
 .modal {
-  display: none;
+  background-color: #fff;
+  margin: 2rem auto;
+  padding: 2rem;
+  position: relative;
+  width: 500px;
 
   > .modal-content {
     > .modal-heading {
@@ -46,13 +50,4 @@ body.modal-open {
     right: 2rem;
     top: 1.8rem;
   }
-}
-
-.modal-open > .modal {
-  background-color: #fff;
-  display: block;
-  margin: 2rem auto;
-  padding: 2rem;
-  position: relative;
-  width: 500px;
 }

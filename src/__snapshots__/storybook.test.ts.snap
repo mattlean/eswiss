@@ -22,7 +22,9 @@ exports[`Storyshots Button Outline 1`] = `
 
 exports[`Storyshots Modal Body Text 1`] = `
 <div
+  aria-hidden={false}
   className="modal-overlay modal-open"
+  role="dialog"
 >
   <section
     className="modal"
@@ -47,15 +49,21 @@ exports[`Storyshots Modal Body Text 1`] = `
 
 exports[`Storyshots Modal Btn And Modal 1`] = `
 Array [
-  <button
-    className="btn"
-    onClick={[Function]}
-    type="button"
-  >
-    Open Modal
-  </button>,
   <div
+    id="content"
+  >
+    <button
+      className="btn"
+      onClick={[Function]}
+      type="button"
+    >
+      Open Modal
+    </button>
+  </div>,
+  <div
+    aria-hidden={true}
     className="modal-overlay"
+    role="dialog"
   >
     <section
       className="modal"
@@ -86,7 +94,9 @@ Array [
 
 exports[`Storyshots Modal Heading 1`] = `
 <div
+  aria-hidden={false}
   className="modal-overlay modal-open"
+  role="dialog"
 >
   <section
     className="modal"
@@ -113,7 +123,9 @@ exports[`Storyshots Modal Heading 1`] = `
 
 exports[`Storyshots Modal Heading And Text 1`] = `
 <div
+  aria-hidden={false}
   className="modal-overlay modal-open"
+  role="dialog"
 >
   <section
     className="modal"
