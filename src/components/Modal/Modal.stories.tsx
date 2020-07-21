@@ -59,6 +59,7 @@ const CompositeBtnAndModal = () => {
         {text('Button Text', 'Open Modal')}
       </Btn>
       <Modal
+        closeOnOverlayClick={true}
         focusEleOnClose={focusEleOnClose}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}

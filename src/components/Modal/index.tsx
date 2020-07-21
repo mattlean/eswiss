@@ -10,6 +10,7 @@ import './_index.scss'
 export interface Props {
   children: ReactNode
   className?: string
+  closeOnOverlayClick?: boolean
   focusEleOnClose?: HTMLElement
   isOpen?: boolean
   onClose?: (event?: MouseEvent<HTMLButtonElement>) => void
@@ -20,6 +21,7 @@ export interface Props {
  * Modal
  * @prop {ReactNode} [children] React component children
  * @prop {string} [className] CSS class attribute value to append to default value
+ * @prop {boolean} [closeOnOverlayClick] Close modal if overlay is clicked if true
  * @prop {HTMLElement} [focusEleOnClose] Element to be focused on after modal closes
  * @prop {boolean} [isOpen] Unhide modal if true
  * @prop {(event?: MouseEvent<HTMLButtonElement>) => void} [onClose] Function to run when close event is triggered
@@ -28,6 +30,7 @@ export interface Props {
 const Modal = ({
   children,
   className,
+  closeOnOverlayClick,
   focusEleOnClose,
   isOpen,
   onClose,
@@ -116,12 +119,38 @@ const Modal = ({
       }
 
       // Apply keyboard tab trap on modal
-      modalEle.current.addEventListener('keydown', trapTab)
-      return () => {
-        currModalEle.removeEventListener('keydown', trapTab)
-      }
+      currModalEle.addEventListener('keydown', trapTab)
+      return () => currModalEle.removeEventListener('keydown', trapTab)
     }
   }, [tabNavStart, tabNavEnd]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const overlayEle = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (closeOnOverlayClick) {
+      if (overlayEle.current) {
+        const currModalOverlayEle = overlayEle.current
+
+        /**
+         * Run closeModal() only when overlay is clicked alone
+         * @param {MouseEvent} e Mouse event object
+         */
+        const clickOverlay = (e: globalThis.MouseEvent) => {
+          if (e.target === currModalOverlayEle) closeModal()
+        }
+
+        /*
+         * TODO
+         * There is a problem with addEventListener & clickOverlay
+         * so clickOverlay's e param is set to "globalThis.MouseEvent"
+         * https://stackoverflow.com/questions/55092588/typescript-addeventlistener-set-event-type
+         */
+        currModalOverlayEle.addEventListener('click', clickOverlay)
+        return () =>
+          currModalOverlayEle.removeEventListener('click', clickOverlay)
+      }
+    }
+  }, [closeOnOverlayClick]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Apply CSS class names
   let c = 'modal-overlay'
@@ -129,7 +158,7 @@ const Modal = ({
   if (className) c += ` ${className}`
 
   return (
-    <div className={c}>
+    <div ref={overlayEle} className={c}>
       <section ref={modalEle} className="modal">
         <section className="modal-content">{children}</section>
         <button type="button" className="modal-close" onClick={closeModal}>
