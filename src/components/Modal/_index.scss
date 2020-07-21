@@ -1,25 +1,24 @@
+body.modal-open {
+  overflow: hidden;
+}
+
 .modal-overlay {
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.25);
   display: none;
-  height: 100vh;
-  justify-content: center;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
 
   &.modal-open {
-    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    display: block;
+    left: 0;
+    overflow: scroll;
+    position: fixed;
+    right: 0;
+    top: 0;
   }
 }
 
 .modal {
-  background-color: #fff;
   display: none;
-  padding: 2rem;
-  position: relative;
-  width: 500px;
 
   > .modal-content {
     > .modal-heading {
@@ -50,5 +49,10 @@
 }
 
 .modal-open > .modal {
+  background-color: #fff;
   display: block;
+  margin: 2rem auto;
+  padding: 2rem;
+  position: relative;
+  width: 500px;
 }
