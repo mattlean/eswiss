@@ -1,6 +1,6 @@
 {
   "name": "eswiss",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -44,6 +44,12 @@
       "no-console": "warn"
     }
   },
+  "auto": {
+    "plugins": [
+      "npm"
+    ],
+    "onlyPublishWithReleaseLabel": true
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -84,10 +90,15 @@
   "repository": "https://github.com/mattlean/eswiss.git",
   "author": "Matthew Lean <matt@mattlean.com>",
   "license": "MIT",
-  "auto": {
-    "plugins": [
-      "npm"
-    ],
-    "onlyPublishWithReleaseLabel": true
-  }
+  "keywords": [
+    "design-system",
+    "react",
+    "storybook",
+    "typescript",
+    "javascript",
+    "sass",
+    "eswiss",
+    "swiss-design",
+    "international-typographic-style"
+  ]
 }
