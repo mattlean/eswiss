@@ -1,12 +1,16 @@
+@use '../../styles/color';
+
 body.modal-open {
   overflow: hidden;
 }
 
 .modal-overlay {
+  --bg: rgba(0, 0, 0, 0.5);
+
   display: none;
 
   &.modal-open {
-    background-color: rgba(0, 0, 0, 0.5);
+    background: var(--bg);
     bottom: 0;
     display: block;
     left: 0;
@@ -18,22 +22,40 @@ body.modal-open {
 }
 
 .modal {
-  background-color: #fff;
-  margin: 2rem auto;
-  padding: 2rem;
-  position: relative;
-  width: 500px;
+  --margin: 2rem;
+  --bg: #{color.$w};
+  --padding: 2rem;
 
-  &.modal-center {
-    left: 50%;
-    margin: 2rem;
-    top: 50%;
+  background-color: var(--bg);
+  margin: var(--margin);
+  padding: var(--padding);
+  position: relative;
+
+  &.modal-hcenter {
+    left: calc(50% - var(--margin));
+    transform: translateX(-50%);
+  }
+
+  &.modal-full {
+    height: 100vh;
+    margin: 0;
+    width: 100vw;
+  }
+
+  &.modal-vcenter {
+    top: calc(50% - var(--margin));
+    transform: translateY(-50%);
+  }
+
+  &.modal-hcenter.modal-vcenter {
     transform: translate(-50%, -50%);
   }
 
   > .modal-content {
+    --upper-txt-spacing: 2rem;
+
     > .modal-heading {
-      margin-bottom: 2rem;
+      margin-bottom: var(--upper-txt-spacing);
 
       &:last-child {
         margin-bottom: 0;
@@ -42,7 +64,7 @@ body.modal-open {
 
     > p {
       &:first-child {
-        margin-top: 2rem;
+        margin-top: var(--upper-txt-spacing);
       }
 
       &:last-child {
@@ -52,9 +74,17 @@ body.modal-open {
   }
 
   > .modal-close {
-    font-weight: bold;
+    --bottom: auto;
+    --font-weight: bold;
+    --left: auto;
+    --right: 2rem;
+    --top: 1.8rem;
+
+    bottom: var(--bottom);
+    font-weight: var(--font-weight);
+    left: var(--left);
     position: absolute;
-    right: 2rem;
-    top: 1.8rem;
+    right: var(--right);
+    top: var(--top);
   }
 }

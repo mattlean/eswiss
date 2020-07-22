@@ -1,18 +1,27 @@
 @use '../../styles/color';
 
 .btn {
-  background-color: color.$primary;
-  color: color.$alt;
+  --bg: #{color.$primary};
+  --color: #{color.$alt};
+  --padding: 0.5rem 1rem;
+
+  background: var(--bg);
+  color: var(--color);
   font-weight: bold;
-  padding: 0.5rem 1rem;
+  padding: var(--padding);
 
   &.outline {
-    background-color: unset;
-    color: color.$primary;
+    --bg: unset;
+    --color: #{color.$primary};
+
+    background: var(--bg);
+    color: var(--color);
     position: relative;
 
     &::before {
-      border: 0.2rem solid color.$primary;
+      --border: 0.2rem solid color.$primary;
+
+      border: var(--border);
       bottom: 0;
       content: '';
       left: 0;
