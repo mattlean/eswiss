@@ -1,3 +1,15 @@
+# v0.0.9 (Wed Jul 22 2020)
+
+#### ⚠️ Pushed to `master`
+
+- Add support for aria-modal attribute for Modal
+
+#### Authors: 1
+
+- Matthew Lean ([@mattlean](https://github.com/mattlean))
+
+---
+
 # v0.0.4 (Tue Jul 21 2020)
 
 #### ⚠️ Pushed to `master`

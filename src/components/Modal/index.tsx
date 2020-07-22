@@ -20,6 +20,8 @@ export interface Props {
   onClose?: (event?: MouseEvent<HTMLButtonElement>) => void
   onOpen?: (...args: any[]) => void
   overlayClassName?: string
+  useAriaHidden?: boolean
+  useAriaModal?: boolean
 }
 
 /**
@@ -36,6 +38,8 @@ export interface Props {
  * @prop {(event?: MouseEvent<HTMLButtonElement>) => void} [onClose] Function to run when close event is triggered
  * @prop {(...args: any[]) => void} [onOpen] Function to run when open event is triggered
  * @prop {string} [overlayClassName] Overlay CSS class attribute value to append to default value.
+ * @prop {boolean} [useAriaHidden] Use aria-hidden attribute on modal when it is closed if true
+ * @prop {boolean} [useAriaModal] Use aria-modal attribute on modal when it is open. Defaults to true if useAriaHidden is not set.
  */
 const Modal = ({
   ariaDescribedBy,
@@ -50,8 +54,14 @@ const Modal = ({
   onClose,
   onOpen,
   overlayClassName,
+  useAriaHidden,
+  useAriaModal,
 }: Props) => {
   const MODAL_OPEN_CLASS = 'modal-open'
+
+  if (useAriaModal === undefined && useAriaHidden === undefined) {
+    useAriaModal = true
+  }
 
   /**
    * Control existance of modal-open CSS class on body element
@@ -221,12 +231,16 @@ const Modal = ({
     oc += ` ${overlayClassName}`
   }
 
+  const ariaHiddenVal = useAriaHidden && !isOpen ? true : undefined
+  const ariaModalVal = useAriaModal && isOpen ? true : undefined
+
   return (
     <div
       ref={overlayEle}
       aria-describedby={ariaDescribedBy}
       aria-labelledby={ariaLabelledBy}
-      aria-hidden={!isOpen}
+      aria-hidden={ariaHiddenVal}
+      aria-modal={ariaModalVal}
       role="dialog"
       className={oc}
     >
