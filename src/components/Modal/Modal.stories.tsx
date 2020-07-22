@@ -3,6 +3,8 @@ import { action } from '@storybook/addon-actions'
 import { text, withKnobs } from '@storybook/addon-knobs'
 import Btn from '../Btn'
 import Modal from './index'
+import './_index.scss'
+import '../Btn/_index.scss'
 
 export default {
   title: 'Modal',
