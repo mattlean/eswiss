@@ -176,14 +176,14 @@ const Modal = ({
          * Run closeModal() only when overlay is clicked alone
          * @param {MouseEvent} e Mouse event object
          */
-        const clickOverlay = (e: globalThis.MouseEvent) => {
+        const clickOverlay = (e: any) => {
           if (e.target === currModalOverlayEle) closeModal()
         }
 
         /*
          * TODO
          * There is a problem with addEventListener & clickOverlay
-         * so clickOverlay's e param is set to "globalThis.MouseEvent"
+         * so clickOverlay's e param is set to "any"
          * https://stackoverflow.com/questions/55092588/typescript-addeventlistener-set-event-type
          */
         currModalOverlayEle.addEventListener('click', clickOverlay)

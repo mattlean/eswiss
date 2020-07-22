@@ -9,8 +9,10 @@ const { createProject } = require('gulp-typescript')
 const tsProject = createProject('tsconfig.json', {
   declaration: true,
   isolatedModules: false,
-  jsx: 'preserve',
+  jsx: 'react',
+  module: 'amd',
   noEmit: false,
+  resolveJsonModule: false,
   sourceMap: true,
 })
 
