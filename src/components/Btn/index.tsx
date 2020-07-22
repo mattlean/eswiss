@@ -1,5 +1,4 @@
 import React, { MouseEvent, ReactNode } from 'react'
-import './_index.scss'
 
 interface Props {
   children?: ReactNode

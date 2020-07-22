@@ -6,7 +6,6 @@ import React, {
   useState,
 } from 'react'
 import { useViewportHeight } from '../../util'
-import './_index.scss'
 
 export interface Props {
   ariaDescribedBy?: string
