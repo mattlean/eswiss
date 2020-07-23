@@ -8,6 +8,7 @@ import React, {
 import { useViewportHeight, useViewportWidth } from '../../util'
 
 export interface Props {
+  allowBgScroll?: boolean
   ariaDescribedBy?: string
   ariaLabelledBy?: string
   autoCenterH?: boolean
@@ -17,6 +18,7 @@ export interface Props {
   closeOnOverlayClick?: boolean
   hideEleWithAria?: HTMLElement | string
   focusEleOnClose?: HTMLElement
+  isFull?: boolean
   isOpen?: boolean
   modalClassName?: string
   modalStyle?: object
@@ -30,6 +32,7 @@ export interface Props {
 
 /**
  * Modal
+ * @prop {boolean} [allowBgScroll] Allow background to scroll while modal is open if true
  * @prop {boolean} [autoCenterH] Automatically center modal horizontally when modal is smaller than viewport width
  * @prop {boolean} [autoCenterV] Automatically center modal vertically when modal is smaller than viewport height
  * @prop {string} [ariaDescribedBy] aria-describedby attribute value
@@ -39,6 +42,7 @@ export interface Props {
  * @prop {boolean} [closeOnOverlayClick] Close modal if overlay is clicked if true
  * @prop {HTMLElement} [focusEleOnClose] Element to be focused on after modal closes
  * @prop {HTMLElement | string} [hideEleWithAria] Element to apply aria-hidden attribute to while modal is open. HTMLElement or selector string is accepted.
+ * @prop {boolean} [isFull] Enable fullscreen if true
  * @prop {boolean} [isOpen] Unhide modal if true
  * @prop {string} [modalClassName] Modal CSS class attribute value to append to default value. Overrides className prop.
  * @prop {object} [modalStyle] Modal style attribute value
@@ -50,6 +54,7 @@ export interface Props {
  * @prop {boolean} [useAriaModal] Use aria-modal attribute on modal when it is open. Defaults to true if useAriaHidden is not set.
  */
 const Modal = ({
+  allowBgScroll,
   autoCenterH,
   autoCenterV,
   ariaDescribedBy,
@@ -59,6 +64,7 @@ const Modal = ({
   closeOnOverlayClick,
   focusEleOnClose,
   hideEleWithAria,
+  isFull,
   isOpen,
   modalClassName,
   modalStyle,
@@ -92,7 +98,7 @@ const Modal = ({
   // Apply modal-open CSS class to body element if isOpen
   useEffect(() => {
     if (isOpen) {
-      setBodyModalState(true)
+      if (!allowBgScroll) setBodyModalState(true)
 
       // Hide background content from a11y API
       if (hideEleWithAria) {
@@ -110,6 +116,9 @@ const Modal = ({
       // Begin focus on first focusable element in modal
       if (tabNavStart) tabNavStart.focus()
     }
+
+    // Remove modal-open CSS class on body on unmount
+    return () => document.body.classList.remove(MODAL_OPEN_CLASS)
   }, [isOpen, tabNavStart]) // eslint-disable-line react-hooks/exhaustive-deps
 
   /**
@@ -249,6 +258,8 @@ const Modal = ({
   } else if (className) {
     mc += ` ${className}`
   }
+
+  if (isFull) mc += ' modal-full'
 
   if (overlayClassName) {
     oc += ` ${overlayClassName}`

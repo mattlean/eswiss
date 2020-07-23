@@ -12,6 +12,7 @@
 
   &.outline {
     --bg: unset;
+    --border: 0.2rem solid #{color.$primary};
     --color: #{color.$primary};
 
     background: var(--bg);
@@ -19,8 +20,6 @@
     position: relative;
 
     &::before {
-      --border: 0.2rem solid color.$primary;
-
       border: var(--border);
       bottom: 0;
       content: '';
