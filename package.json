@@ -1,6 +1,6 @@
 {
   "name": "eswiss",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -19,6 +19,7 @@
   "scripts": {
     "build": "gulp",
     "build-storybook": "build-storybook -s public",
+    "deploy-storybook": "storybook-to-ghpages",
     "chromatic": "chromatic",
     "cra-build": "react-scripts build",
     "cra-start": "react-scripts start",
@@ -64,6 +65,7 @@
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-docs": "^5.3.19",
     "@storybook/addon-knobs": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
     "@storybook/addon-storyshots": "^5.3.19",
@@ -71,6 +73,7 @@
     "@storybook/addons": "^5.3.19",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^5.3.19",
+    "@storybook/storybook-deployer": "^2.8.6",
     "auto": "^9.47.1",
     "del": "^5.1.0",
     "eslint-config-prettier": "^6.11.0",

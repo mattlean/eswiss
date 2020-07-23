@@ -15,7 +15,7 @@ on:
 # what the action will do
 jobs:
   test:
-    if: github.event_name == 'push' && contains(toJson(github.event.commits), '***NO_CI***') == false && contains(toJson(github.event.commits), '[ci skip]') == false && contains(toJson(github.event.commits), '[skip ci]') == false
+    if: github.event_name == 'push' && contains(toJson(github.event.commits), '***NO_CI***') == false && contains(toJson(github.event.commits), '[ci skip]') == false && contains(toJson(github.event.commits), '[skip ci]') == false && contains(toJson(github.event.commits), '[chromatic skip]') == false && contains(toJson(github.event.commits), '[skip chromatic]') == false
     # the operating system it will run on
     runs-on: ubuntu-latest
     # the list of steps that the action will go through

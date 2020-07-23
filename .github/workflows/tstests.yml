@@ -7,7 +7,7 @@ on: push
 
 jobs:
   build:
-    if: github.event_name == 'push' && contains(toJson(github.event.commits), '***NO_CI***') == false && contains(toJson(github.event.commits), '[ci skip]') == false && contains(toJson(github.event.commits), '[skip ci]') == false
+    if: github.event_name == 'push' && contains(toJson(github.event.commits), '***NO_CI***') == false && contains(toJson(github.event.commits), '[ci skip]') == false && contains(toJson(github.event.commits), '[skip ci]') == false && contains(toJson(github.event.commits), '[tstests skip]') == false && contains(toJson(github.event.commits), '[skip tstests]') == false
     runs-on: ubuntu-latest
 
     strategy:

@@ -5,43 +5,58 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { useViewportHeight } from '../../util'
+import { useViewportHeight, useViewportWidth } from '../../util'
 
 export interface Props {
+  allowBgScroll?: boolean
   ariaDescribedBy?: string
   ariaLabelledBy?: string
+  autoCenterH?: boolean
+  autoCenterV?: boolean
   children?: ReactNode
   className?: string
   closeOnOverlayClick?: boolean
   hideEleWithAria?: HTMLElement | string
   focusEleOnClose?: HTMLElement
+  isFull?: boolean
   isOpen?: boolean
   modalClassName?: string
+  modalStyle?: object
   onClose?: (event?: MouseEvent<HTMLButtonElement>) => void
   onOpen?: (...args: any[]) => void
   overlayClassName?: string
+  overlayStyle?: object
   useAriaHidden?: boolean
   useAriaModal?: boolean
 }
 
 /**
  * Modal
+ * @prop {boolean} [allowBgScroll] Allow background to scroll while modal is open if true
+ * @prop {boolean} [autoCenterH] Automatically center modal horizontally when modal is smaller than viewport width
+ * @prop {boolean} [autoCenterV] Automatically center modal vertically when modal is smaller than viewport height
  * @prop {string} [ariaDescribedBy] aria-describedby attribute value
  * @prop {string} [ariaLabelledBy] aria-labelledby attribute value
  * @prop {ReactNode} [children] React component children
- * @prop {string} [className] Modal CSS class attribute value to append to default value. Overrides modalClassName prop.
+ * @prop {string} [className] Modal CSS class attribute value to append to default value. Overwritten by modalClassName prop.
  * @prop {boolean} [closeOnOverlayClick] Close modal if overlay is clicked if true
  * @prop {HTMLElement} [focusEleOnClose] Element to be focused on after modal closes
  * @prop {HTMLElement | string} [hideEleWithAria] Element to apply aria-hidden attribute to while modal is open. HTMLElement or selector string is accepted.
+ * @prop {boolean} [isFull] Enable fullscreen if true
  * @prop {boolean} [isOpen] Unhide modal if true
- * @prop {string} [modalClassName] Modal CSS class attribute value to append to default value. Overwritten by className prop.
+ * @prop {string} [modalClassName] Modal CSS class attribute value to append to default value. Overrides className prop.
+ * @prop {object} [modalStyle] Modal style attribute value
  * @prop {(event?: MouseEvent<HTMLButtonElement>) => void} [onClose] Function to run when close event is triggered
  * @prop {(...args: any[]) => void} [onOpen] Function to run when open event is triggered
  * @prop {string} [overlayClassName] Overlay CSS class attribute value to append to default value.
+ * @prop {object} [overlayStyle] Overlay style attribute value
  * @prop {boolean} [useAriaHidden] Use aria-hidden attribute on modal when it is closed if true
  * @prop {boolean} [useAriaModal] Use aria-modal attribute on modal when it is open. Defaults to true if useAriaHidden is not set.
  */
 const Modal = ({
+  allowBgScroll,
+  autoCenterH,
+  autoCenterV,
   ariaDescribedBy,
   ariaLabelledBy,
   children,
@@ -49,11 +64,14 @@ const Modal = ({
   closeOnOverlayClick,
   focusEleOnClose,
   hideEleWithAria,
+  isFull,
   isOpen,
   modalClassName,
+  modalStyle,
   onClose,
   onOpen,
   overlayClassName,
+  overlayStyle,
   useAriaHidden,
   useAriaModal,
 }: Props) => {
@@ -80,7 +98,7 @@ const Modal = ({
   // Apply modal-open CSS class to body element if isOpen
   useEffect(() => {
     if (isOpen) {
-      setBodyModalState(true)
+      if (!allowBgScroll) setBodyModalState(true)
 
       // Hide background content from a11y API
       if (hideEleWithAria) {
@@ -98,6 +116,9 @@ const Modal = ({
       // Begin focus on first focusable element in modal
       if (tabNavStart) tabNavStart.focus()
     }
+
+    // Remove modal-open CSS class on body on unmount
+    return () => document.body.classList.remove(MODAL_OPEN_CLASS)
   }, [isOpen, tabNavStart]) // eslint-disable-line react-hooks/exhaustive-deps
 
   /**
@@ -202,17 +223,28 @@ const Modal = ({
     }
   }, [closeOnOverlayClick, hideEleWithAria]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Apply modal-center CSS class if modal shorter than viewport height
+  // Auto-center modal if conditions are met
+  const viewportWidth = useViewportWidth()
   const viewportHeight = useViewportHeight()
   useEffect(() => {
     if (modalEle && modalEle.current) {
-      if (modalEle.current.offsetHeight < viewportHeight) {
-        modalEle.current.classList.add('modal-center')
-      } else {
-        modalEle.current.classList.remove('modal-center')
+      if (autoCenterH) {
+        if (modalEle.current.offsetWidth < viewportWidth) {
+          modalEle.current.classList.add('modal-hcenter')
+        } else {
+          modalEle.current.classList.remove('modal-hcenter')
+        }
+      }
+
+      if (autoCenterV) {
+        if (modalEle.current.offsetHeight < viewportHeight) {
+          modalEle.current.classList.add('modal-vcenter')
+        } else {
+          modalEle.current.classList.remove('modal-vcenter')
+        }
       }
     }
-  }, [viewportHeight])
+  }, [viewportWidth, viewportHeight]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Apply CSS class names
   let mc = 'modal'
@@ -221,11 +253,13 @@ const Modal = ({
     oc += ` ${MODAL_OPEN_CLASS}`
   }
 
-  if (className) {
-    mc += ` ${className}`
-  } else if (modalClassName) {
+  if (modalClassName) {
     mc += ` ${modalClassName}`
+  } else if (className) {
+    mc += ` ${className}`
   }
+
+  if (isFull) mc += ' modal-full'
 
   if (overlayClassName) {
     oc += ` ${overlayClassName}`
@@ -243,8 +277,9 @@ const Modal = ({
       aria-modal={ariaModalVal}
       role="dialog"
       className={oc}
+      style={overlayStyle}
     >
-      <section ref={modalEle} className={mc}>
+      <section ref={modalEle} className={mc} style={modalStyle}>
         <section className="modal-content">{children}</section>
         <button type="button" className="modal-close" onClick={closeModal}>
           X
