@@ -124,6 +124,11 @@ const Modal = ({
     return () => document.body.classList.remove(MODAL_OPEN_CLASS)
   }, [isOpen, tabNavStart]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Remove modal-open CSS class from body element if allowBgScroll is changed to false
+  useEffect(() => {
+    if (!allowBgScroll) document.body.classList.remove(MODAL_OPEN_CLASS)
+  }, [allowBgScroll])
+
   /**
    * Function called when onClose event is triggered
    */
