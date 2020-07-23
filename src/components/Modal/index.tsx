@@ -10,6 +10,7 @@ import { useViewportHeight, useViewportWidth } from '../../util'
 export interface Props {
   allowBgScroll?: boolean
   ariaDescribedBy?: string
+  ariaLabel?: string
   ariaLabelledBy?: string
   autoCenterH?: boolean
   autoCenterV?: boolean
@@ -36,6 +37,7 @@ export interface Props {
  * @prop {boolean} [autoCenterH] Automatically center modal horizontally when modal is smaller than viewport width
  * @prop {boolean} [autoCenterV] Automatically center modal vertically when modal is smaller than viewport height
  * @prop {string} [ariaDescribedBy] aria-describedby attribute value
+ * @prop {string} [ariaLabel] aria-label attribute value
  * @prop {string} [ariaLabelledBy] aria-labelledby attribute value
  * @prop {ReactNode} [children] React component children
  * @prop {string} [className] Modal CSS class attribute value to append to default value. Overwritten by modalClassName prop.
@@ -58,6 +60,7 @@ const Modal = ({
   autoCenterH,
   autoCenterV,
   ariaDescribedBy,
+  ariaLabel,
   ariaLabelledBy,
   children,
   className,
@@ -272,6 +275,7 @@ const Modal = ({
     <div
       ref={overlayEle}
       aria-describedby={ariaDescribedBy}
+      aria-label={ariaLabel}
       aria-labelledby={ariaLabelledBy}
       aria-hidden={ariaHiddenVal}
       aria-modal={ariaModalVal}
@@ -280,10 +284,15 @@ const Modal = ({
       style={overlayStyle}
     >
       <section ref={modalEle} className={mc} style={modalStyle}>
-        <section className="modal-content">{children}</section>
-        <button type="button" className="modal-close" onClick={closeModal}>
+        <button
+          type="button"
+          aria-label="Close Modal"
+          onClick={closeModal}
+          className="modal-close"
+        >
           X
         </button>
+        <section className="modal-content">{children}</section>
       </section>
     </div>
   )
