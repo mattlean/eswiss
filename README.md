@@ -8,19 +8,20 @@
 
 The goals of the project are:
 
-- Design beautiful UI using a rational and consistent design methodology
-- Rapidly develop UI through utilization of reusable components and well-defined design guidelines
-- Streamline collaboration between designers and developers
-- Streamline design and development process for solo-developers
-- Enforce maintainability to keep design and development straightforward and efficient
+- 📝 Design beautiful UI using a rational and consistent design methodology
+- 🏃 Rapidly develop robust UI through utilization of reusable components and well-defined design guidelines
+- 🤝 Encourage and streamline collaboration between designers and developers
+- 🏋️ Streamline design and development process for solo-developers
+- 🥗 Enforce maintainability in design and development process
+- ♿ Encourage and streamline accessible and responsive design
 
 ## Development
 
 eswiss requires [React](https://github.com/facebook/react), [Sass](https://github.com/sass/sass), and JavaScript. Alternatively, [TypeScript](https://github.com/microsoft/TypeScript) can also be used in place of JavaScript as declaration files are included.
 
-## Preview Components
+## Preview Component Library
 
-You can view the component library on this project's GitHub pages: http://mattlean.github.io/eswiss
+Thanks to [Storybook](https://github.com/storybookjs/storybook), you can view the component library on this project's GitHub pages: http://mattlean.github.io/eswiss
 
 ## License
 
