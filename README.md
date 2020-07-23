@@ -18,6 +18,10 @@ The goals of the project are:
 
 eswiss requires [React](https://github.com/facebook/react), [Sass](https://github.com/sass/sass), and JavaScript. Alternatively, [TypeScript](https://github.com/microsoft/TypeScript) can also be used in place of JavaScript as declaration files are included.
 
+## Preview Components
+
+You can view the component library on this project's GitHub pages: http://mattlean.github.io/eswiss
+
 ## License
 
 This project is licensed with an [MIT license](https://github.com/mattlean/eswiss/blob/master/LICENSE).
