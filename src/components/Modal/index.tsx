@@ -78,8 +78,9 @@ const Modal = ({
   useAriaHidden,
   useAriaModal,
 }: Props) => {
-  const MODAL_OPEN_CLASS = 'modal-open'
+  const MODAL_OPEN_CLASS = 'modal-open' // CSS class that controls if modal is open visually
 
+  // Use aria-modal in default conditions
   if (useAriaModal === undefined && useAriaHidden === undefined) {
     useAriaModal = true
   }
@@ -122,7 +123,7 @@ const Modal = ({
 
     // Remove modal-open CSS class on body on unmount
     return () => document.body.classList.remove(MODAL_OPEN_CLASS)
-  }, [isOpen, tabNavStart]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [allowBgScroll, hideEleWithAria, isOpen, onOpen, tabNavStart])
 
   // Remove modal-open CSS class from body element if allowBgScroll is changed to false
   useEffect(() => {
@@ -201,13 +202,14 @@ const Modal = ({
       currModalEle.addEventListener('keydown', trapTab)
       return () => currModalEle.removeEventListener('keydown', trapTab)
     }
-  }, [hideEleWithAria, tabNavStart, tabNavEnd]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [tabNavStart, tabNavEnd]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const overlayEle = useRef<HTMLDivElement>(null)
 
+  // Handle overlay click event listener
   useEffect(() => {
     if (closeOnOverlayClick) {
-      if (overlayEle.current) {
+      if (overlayEle && overlayEle.current) {
         const currModalOverlayEle = overlayEle.current
 
         /**
@@ -229,7 +231,7 @@ const Modal = ({
           currModalOverlayEle.removeEventListener('click', clickOverlay)
       }
     }
-  }, [closeOnOverlayClick, hideEleWithAria]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [closeOnOverlayClick]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Auto-center modal if conditions are met
   const viewportWidth = useViewportWidth()
@@ -238,21 +240,21 @@ const Modal = ({
     if (modalEle && modalEle.current) {
       if (autoCenterH) {
         if (modalEle.current.offsetWidth < viewportWidth) {
-          modalEle.current.classList.add('modal-hcenter')
+          modalEle.current.classList.add('modal-centerh')
         } else {
-          modalEle.current.classList.remove('modal-hcenter')
+          modalEle.current.classList.remove('modal-centerh')
         }
       }
 
       if (autoCenterV) {
         if (modalEle.current.offsetHeight < viewportHeight) {
-          modalEle.current.classList.add('modal-vcenter')
+          modalEle.current.classList.add('modal-centerv')
         } else {
-          modalEle.current.classList.remove('modal-vcenter')
+          modalEle.current.classList.remove('modal-centerv')
         }
       }
     }
-  }, [viewportWidth, viewportHeight]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [autoCenterH, autoCenterV, viewportHeight, viewportWidth])
 
   // Apply CSS class names
   let mc = 'modal'
@@ -273,9 +275,11 @@ const Modal = ({
     oc += ` ${overlayClassName}`
   }
 
+  // Assign conditional aria attributes
   const ariaHiddenVal = useAriaHidden && !isOpen ? true : undefined
   const ariaModalVal = useAriaModal && isOpen ? true : undefined
 
+  // Render component
   return (
     <div
       ref={overlayEle}

@@ -31,24 +31,24 @@ body.modal-open {
   padding: var(--padding);
   position: relative;
 
-  &.modal-hcenter {
+  &.modal-centerh {
     left: calc(50% - var(--margin));
     transform: translateX(-50%);
+  }
+
+  &.modal-centerv {
+    top: calc(50% - var(--margin));
+    transform: translateY(-50%);
+  }
+
+  &.modal-centerh.modal-centerv {
+    transform: translate(-50%, -50%);
   }
 
   &.modal-full {
     margin: 0;
     min-height: 100vh;
     width: 100vw;
-  }
-
-  &.modal-vcenter {
-    top: calc(50% - var(--margin));
-    transform: translateY(-50%);
-  }
-
-  &.modal-hcenter.modal-vcenter {
-    transform: translate(-50%, -50%);
   }
 
   > .modal-content {
