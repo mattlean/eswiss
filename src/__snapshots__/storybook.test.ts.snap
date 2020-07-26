@@ -1,5 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Badge Badge And Button 1`] = `
+<button
+  className="btn"
+  type="button"
+>
+  Notifications
+   
+  <div
+    className="badge badge-fill badge-wide"
+    style={
+      Object {
+        "backgroundColor": "blue",
+        "marginLeft": "0.5em",
+        "padding": "0.4em 0.6em 0.25em",
+      }
+    }
+  >
+    9
+  </div>
+</button>
+`;
+
+exports[`Storyshots Badge Badge And Heading 1`] = `
+<h1
+  className="heading4"
+>
+  Lorem Ipsum
+   
+  <div
+    className="badge badge-fill"
+    style={
+      Object {
+        "backgroundColor": "red",
+      }
+    }
+  >
+    New
+  </div>
+</h1>
+`;
+
+exports[`Storyshots Badge Default 1`] = `
+<div
+  className="badge badge-wide"
+>
+  Lorem Ipsum
+</div>
+`;
+
+exports[`Storyshots Badge Fill 1`] = `
+<div
+  className="badge badge-fill badge-wide"
+>
+  Lorem Ipsum
+</div>
+`;
+
 exports[`Storyshots Button Default 1`] = `
 <button
   className="btn"
@@ -76,7 +133,7 @@ exports[`Storyshots Modal Body Text 1`] = `
 </div>
 `;
 
-exports[`Storyshots Modal Btn And Long Text And Modal 1`] = `
+exports[`Storyshots Modal Button And Long Text And Modal 1`] = `
 Array [
   <div
     id="content"

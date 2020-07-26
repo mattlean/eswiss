@@ -45,7 +45,7 @@ const Badge = ({
   } else {
     Node = 'div'
 
-    if (nodeType !== 'div') {
+    if (nodeType !== undefined && nodeType !== 'div') {
       // eslint-disable-next-line no-console
       console.warn(
         'Attempted to set unsupported node type. Setting node type as "div".'
