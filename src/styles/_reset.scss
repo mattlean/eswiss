@@ -1,18 +1,16 @@
-@use './color';
-@use './size';
-
 *,
 *::after,
 *::before {
   box-sizing: border-box;
 }
 
-$default-font-size: size.$size-16;
-$default-font-color: color.$primary;
+$default-font-size: 16px;
+$default-color: #000;
+$default-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 body {
-  color: $default-font-color;
-  font: normal $default-font-size 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: $default-color;
+  font: normal $default-font-size $default-font-family;
   line-height: 1.25em;
   margin: 0;
 }

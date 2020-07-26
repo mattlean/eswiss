@@ -27,6 +27,7 @@ export interface Props {
   onOpen?: (...args: any[]) => void
   overlayClassName?: string
   overlayStyle?: object
+  style?: object
   useAriaHidden?: boolean
   useAriaModal?: boolean
 }
@@ -47,11 +48,12 @@ export interface Props {
  * @prop {boolean} [isFull] Enable fullscreen if true
  * @prop {boolean} [isOpen] Unhide modal if true
  * @prop {string} [modalClassName] Modal CSS class attribute value to append to default value. Overrides className prop.
- * @prop {object} [modalStyle] Modal style attribute value
+ * @prop {object} [modalStyle] Modal style attribute value. Overrides style prop.
  * @prop {(event?: MouseEvent<HTMLButtonElement>) => void} [onClose] Function to run when close event is triggered
  * @prop {(...args: any[]) => void} [onOpen] Function to run when open event is triggered
  * @prop {string} [overlayClassName] Overlay CSS class attribute value to append to default value.
  * @prop {object} [overlayStyle] Overlay style attribute value
+ * @prop {object} [style] Modal style attribute value. Overwritten by modalStyle prop.
  * @prop {boolean} [useAriaHidden] Use aria-hidden attribute on modal when it is closed if true
  * @prop {boolean} [useAriaModal] Use aria-modal attribute on modal when it is open. Defaults to true if useAriaHidden is not set.
  */
@@ -75,6 +77,7 @@ const Modal = ({
   onOpen,
   overlayClassName,
   overlayStyle,
+  style,
   useAriaHidden,
   useAriaModal,
 }: Props) => {
@@ -256,6 +259,10 @@ const Modal = ({
     }
   }, [autoCenterH, autoCenterV, viewportHeight, viewportWidth])
 
+  // Assign conditional aria attributes
+  const ariaHiddenVal = useAriaHidden && !isOpen ? true : undefined
+  const ariaModalVal = useAriaModal && isOpen ? true : undefined
+
   // Apply CSS class names
   let mc = 'modal'
   let oc = 'modal-overlay'
@@ -275,9 +282,13 @@ const Modal = ({
     oc += ` ${overlayClassName}`
   }
 
-  // Assign conditional aria attributes
-  const ariaHiddenVal = useAriaHidden && !isOpen ? true : undefined
-  const ariaModalVal = useAriaModal && isOpen ? true : undefined
+  // Apply style
+  let s
+  if (modalStyle) {
+    s = modalStyle
+  } else if (style) {
+    s = style
+  }
 
   // Render component
   return (
@@ -292,7 +303,7 @@ const Modal = ({
       className={oc}
       style={overlayStyle}
     >
-      <section ref={modalEle} className={mc} style={modalStyle}>
+      <section ref={modalEle} className={mc} style={s}>
         <button
           type="button"
           aria-label="Close Modal"

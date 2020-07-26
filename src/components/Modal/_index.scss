@@ -1,5 +1,3 @@
-@use '../../styles/color';
-
 body.modal-open {
   overflow: hidden;
 }
@@ -23,7 +21,7 @@ body.modal-open {
 
 .modal {
   --margin: 2rem;
-  --bg: #{color.$w};
+  --bg: var(--secondary);
   --padding: 2rem;
 
   background-color: var(--bg);
@@ -51,10 +49,10 @@ body.modal-open {
     width: 100vw;
   }
 
-  > .modal-content {
+  .modal-content {
     --upper-txt-spacing: 2rem;
 
-    > .modal-heading {
+    .modal-heading {
       margin-bottom: var(--upper-txt-spacing);
 
       &:last-child {
@@ -62,7 +60,7 @@ body.modal-open {
       }
     }
 
-    > p {
+    p {
       &:first-child {
         margin-top: var(--upper-txt-spacing);
       }
@@ -73,7 +71,7 @@ body.modal-open {
     }
   }
 
-  > .modal-close {
+  .modal-close {
     --bottom: auto;
     --font-weight: bold;
     --left: auto;

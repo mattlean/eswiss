@@ -187,4 +187,4 @@ const CompositeContentAndModal = () => {
   )
 }
 
-export const BtnAndLongTextAndModal = () => <CompositeContentAndModal />
+export const ButtonAndLongTextAndModal = () => <CompositeContentAndModal />
