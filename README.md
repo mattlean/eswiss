@@ -8,7 +8,7 @@
 
 The goals of the project are:
 
-- 📝 Design beautiful UI using a rational and consistent design methodology
+- 📐 Design beautiful and practical UI using a mature, logic-driven design methodology
 - 🏃 Rapidly develop robust UI through utilization of reusable components and well-defined design guidelines
 - 🤝 Encourage and streamline collaboration between designers and developers
 - 🏋️ Streamline design and development process for solo-developers

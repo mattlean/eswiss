@@ -41,6 +41,45 @@ exports[`Storyshots Badge Badge And Heading 1`] = `
 </h1>
 `;
 
+exports[`Storyshots Badge Badge Click 1`] = `
+<div
+  className="badge badge-wide badge-clickable"
+  onClick={[Function]}
+>
+  Lipsum
+</div>
+`;
+
+exports[`Storyshots Badge Badge List 1`] = `
+Array [
+  <div
+    className="badge badge-wide"
+  >
+    #foo
+  </div>,
+  <div
+    className="badge badge-wide"
+    style={
+      Object {
+        "marginLeft": "1em",
+      }
+    }
+  >
+    #bar
+  </div>,
+  <div
+    className="badge badge-wide"
+    style={
+      Object {
+        "marginLeft": "1em",
+      }
+    }
+  >
+    #baz
+  </div>,
+]
+`;
+
 exports[`Storyshots Badge Default 1`] = `
 <div
   className="badge badge-wide"

@@ -1,4 +1,5 @@
 import React from 'react'
+import { action } from '@storybook/addon-actions'
 import { text, withKnobs } from '@storybook/addon-knobs'
 import Badge from './index'
 import Btn from '../Btn'
@@ -46,4 +47,20 @@ export const BadgeAndButton = () => (
   </Btn>
 )
 
-// TODO: test onClick
+export const BadgeClick = () => (
+  <Badge wide={true} onClick={action('Triggered click event')}>
+    Lipsum
+  </Badge>
+)
+
+export const BadgeList = () => (
+  <>
+    <Badge wide={true}>#foo</Badge>
+    <Badge wide={true} style={{ marginLeft: '1em' }}>
+      #bar
+    </Badge>
+    <Badge wide={true} style={{ marginLeft: '1em' }}>
+      #baz
+    </Badge>
+  </>
+)
