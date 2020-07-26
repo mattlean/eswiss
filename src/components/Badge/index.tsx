@@ -21,7 +21,7 @@ export interface Props {
  * @prop {children} [children] Children
  * @prop {string} [className] CSS class attribute value to append to default value
  * @prop {boolean} [fill] Uses fill style if true
- * @prop {'div'|'li'} [nodeType] Determines if badge is div or li element
+ * @prop {'div'|'li'} [nodeType='div'] Determines if badge is div or li element
  * @prop {(event?: MouseEvent<HTMLElement>) => void} [onClick] Function to run when click event is triggered
  * @prop {object} [style] Style attribute value
  * @prop {boolean} [wide] Uses wide style if true
@@ -72,6 +72,7 @@ const Badge = ({
     c += ` ${className}`
   }
 
+  // Render component
   return (
     <Node
       aria-describedby={ariaDescribedBy}
