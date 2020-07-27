@@ -9,6 +9,7 @@ export interface Props {
   fill?: boolean
   nodeType?: 'div' | 'li'
   onClick?: (event?: MouseEvent<HTMLElement>) => void
+  overrideClassName?: boolean
   style?: object
   wide?: boolean
 }
@@ -23,6 +24,7 @@ export interface Props {
  * @prop {boolean} [fill] Uses fill style if true
  * @prop {'div'|'li'} [nodeType='div'] Determines if badge is div or li element
  * @prop {(event?: MouseEvent<HTMLElement>) => void} [onClick] Function to run when click event is triggered
+ * @prop {boolean} [overrideClassName] Override default class attribute values if true
  * @prop {object} [style] Style attribute value
  * @prop {boolean} [wide] Uses wide style if true
  */
@@ -35,6 +37,7 @@ const Badge = ({
   fill,
   nodeType,
   onClick,
+  overrideClassName,
   style,
   wide,
 }: Props) => {
@@ -54,23 +57,14 @@ const Badge = ({
   }
 
   // Apply CSS class names
-  let c = 'badge'
-
-  if (fill) {
-    c += ' badge-fill'
+  let classNames = []
+  if (!overrideClassName) {
+    classNames.push('badge')
+    if (fill) classNames.push('badge-fill')
+    if (wide) classNames.push('badge-wide')
+    if (onClick) classNames.push('badge-clickable')
   }
-
-  if (wide) {
-    c += ' badge-wide'
-  }
-
-  if (onClick) {
-    c += ' badge-clickable'
-  }
-
-  if (className) {
-    c += ` ${className}`
-  }
+  if (className) classNames.push(className)
 
   // Render component
   return (
@@ -79,7 +73,7 @@ const Badge = ({
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledBy}
       onClick={onClick}
-      className={c}
+      className={classNames.join(' ')}
       style={style}
     >
       {children}

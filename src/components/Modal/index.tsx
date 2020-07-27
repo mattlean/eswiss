@@ -27,6 +27,7 @@ export interface Props {
   onOpen?: (...args: any[]) => void
   overlayClassName?: string
   overlayStyle?: object
+  overrideClassName?: boolean
   style?: object
   useAriaHidden?: boolean
   useAriaModal?: boolean
@@ -52,6 +53,7 @@ export interface Props {
  * @prop {(event?: MouseEvent<HTMLButtonElement>) => void} [onClose] Function to run when close event is triggered
  * @prop {(...args: any[]) => void} [onOpen] Function to run when open event is triggered
  * @prop {string} [overlayClassName] Overlay CSS class attribute value to append to default value.
+ * @prop {boolean} [overrideClassName] Override default class attribute values if true
  * @prop {object} [overlayStyle] Overlay style attribute value
  * @prop {object} [style] Modal style attribute value. Overwritten by modalStyle prop.
  * @prop {boolean} [useAriaHidden] Use aria-hidden attribute on modal when it is closed if true
@@ -77,6 +79,7 @@ const Modal = ({
   onOpen,
   overlayClassName,
   overlayStyle,
+  overrideClassName,
   style,
   useAriaHidden,
   useAriaModal,
@@ -264,23 +267,22 @@ const Modal = ({
   const ariaModalVal = useAriaModal && isOpen ? true : undefined
 
   // Apply CSS class names
-  let mc = 'modal'
-  let oc = 'modal-overlay'
-  if (isOpen) {
-    oc += ` ${MODAL_OPEN_CLASS}`
+  let modalClassNames = []
+  let overlayClassNames = []
+  if (!overrideClassName) {
+    modalClassNames.push('modal')
+    overlayClassNames.push('modal-overlay')
+    if (isOpen) overlayClassNames.push(MODAL_OPEN_CLASS)
+    if (isFull) modalClassNames.push('modal-full')
   }
 
   if (modalClassName) {
-    mc += ` ${modalClassName}`
+    modalClassNames.push(modalClassName)
   } else if (className) {
-    mc += ` ${className}`
+    modalClassNames.push(className)
   }
 
-  if (isFull) mc += ' modal-full'
-
-  if (overlayClassName) {
-    oc += ` ${overlayClassName}`
-  }
+  if (overlayClassName) overlayClassNames.push(overlayClassName)
 
   // Apply style
   let s
@@ -300,10 +302,10 @@ const Modal = ({
       aria-hidden={ariaHiddenVal}
       aria-modal={ariaModalVal}
       role="dialog"
-      className={oc}
+      className={overlayClassNames.join(' ')}
       style={overlayStyle}
     >
-      <section ref={modalEle} className={mc} style={s}>
+      <section ref={modalEle} className={modalClassNames.join(' ')} style={s}>
         <button
           type="button"
           aria-label="Close Modal"

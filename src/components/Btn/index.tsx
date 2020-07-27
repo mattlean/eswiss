@@ -9,6 +9,7 @@ interface Props {
   nodeType?: 'button' | 'input'
   onClick?: (event?: MouseEvent<HTMLButtonElement | HTMLInputElement>) => void
   outline?: boolean
+  overrideClassName?: boolean
   style?: object
   type?: 'button' | 'reset' | 'submit'
 }
@@ -23,9 +24,9 @@ interface Props {
  * @prop {'button'|'input'} [nodeType='button'] Determine if button is button or input element
  * @prop {(event?: MouseEvent<HTMLButtonElement|HTMLInputElement>) => void} [onClick] Function to run when click event is triggered
  * @prop {boolean} [outline] Set outline style if true
+ * @prop {boolean} [overrideClassName] Override default class attribute values if true
  * @prop {object} [style] Style attribute value
- * @prop {('button' | 'reset' | 'submit')} [type=button] HTML type attribute
- *
+ * @prop {('button' | 'reset' | 'submit')} [type='button'] HTML type attribute
  */
 const Btn = ({
   ariaDescribedBy,
@@ -35,6 +36,7 @@ const Btn = ({
   className,
   nodeType,
   onClick,
+  overrideClassName,
   outline,
   style,
   type,
@@ -54,11 +56,15 @@ const Btn = ({
     }
   }
 
+  let t = type || 'button' // Apply type attribute
+
   // Apply CSS class names
-  let t = type || 'button'
-  let c = 'btn'
-  if (outline) c += ' outline'
-  if (className) c += ` ${className}`
+  let classNames = []
+  if (!overrideClassName) {
+    classNames.push('btn')
+    if (outline) classNames.push('outline')
+  }
+  if (className) classNames.push(className)
 
   // Render component
   return (
@@ -68,7 +74,7 @@ const Btn = ({
       aria-labelledby={ariaLabelledBy}
       type={t}
       onClick={onClick}
-      className={c}
+      className={classNames.join(' ')}
       style={style}
     >
       {children}
