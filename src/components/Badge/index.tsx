@@ -1,68 +1,68 @@
 import React, { MouseEvent, ReactNode } from 'react'
 
-interface Props {
+export interface Props {
   ariaDescribedBy?: string
   ariaLabel?: string
   ariaLabelledBy?: string
   children?: ReactNode
   className?: string
-  nodeType?: 'button' | 'input'
-  onClick?: (event?: MouseEvent<HTMLButtonElement | HTMLInputElement>) => void
-  outline?: boolean
+  fill?: boolean
+  nodeType?: 'div' | 'li'
+  onClick?: (event?: MouseEvent<HTMLElement>) => void
   overrideClassName?: boolean
   style?: object
-  type?: 'button' | 'reset' | 'submit'
+  wide?: boolean
 }
 
 /**
- * Button
+ * Badge
  * @prop {string} [ariaDescribedBy] aria-describedby attribute value
  * @prop {string} [ariaLabel] aria-label attribute value
  * @prop {string} [ariaLabelledBy] aria-labelledby attribute value
- * @prop {ReactNode} [children] React component children
+ * @prop {children} [children] Children
  * @prop {string} [className] CSS class attribute value to append to default value
- * @prop {'button'|'input'} [nodeType='button'] Determine if button is button or input element
- * @prop {(event?: MouseEvent<HTMLButtonElement|HTMLInputElement>) => void} [onClick] Function to run when click event is triggered
- * @prop {boolean} [outline] Set outline style if true
+ * @prop {boolean} [fill] Uses fill style if true
+ * @prop {'div'|'li'} [nodeType='div'] Determines if badge is div or li element
+ * @prop {(event?: MouseEvent<HTMLElement>) => void} [onClick] Function to run when click event is triggered
  * @prop {boolean} [overrideClassName] Override default class attribute values if true
  * @prop {object} [style] Style attribute value
- * @prop {('button' | 'reset' | 'submit')} [type='button'] HTML type attribute
+ * @prop {boolean} [wide] Uses wide style if true
  */
-const Btn = ({
+const Badge = ({
   ariaDescribedBy,
   ariaLabel,
   ariaLabelledBy,
   children,
   className,
+  fill,
   nodeType,
   onClick,
   overrideClassName,
-  outline,
   style,
-  type,
+  wide,
 }: Props) => {
   // Create DOM node type
   let Node: keyof JSX.IntrinsicElements
-  if (nodeType === 'input') {
-    Node = 'input'
+  if (nodeType === 'li') {
+    Node = 'li'
   } else {
-    Node = 'button'
+    Node = 'div'
 
-    if (nodeType !== undefined && nodeType !== 'button') {
+    if (nodeType !== undefined && nodeType !== 'div') {
       // eslint-disable-next-line no-console
       console.warn(
-        'Attempted to set unsupported node type. Setting node type as "button".'
+        'Attempted to set unsupported node type. Setting node type as "div".'
       )
     }
   }
 
-  let t = type || 'button' // Apply type attribute
-
   // Apply CSS class names
   let classNames = []
   if (!overrideClassName) {
-    classNames.push('btn')
-    if (outline) classNames.push('outline')
+    classNames.push('badge')
+    if (fill) classNames.push('badge-fill')
+    if (wide) classNames.push('badge-wide')
+    if (onClick) classNames.push('badge-clickable')
   }
   if (className) classNames.push(className)
 
@@ -72,7 +72,6 @@ const Btn = ({
       aria-describedby={ariaDescribedBy}
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledBy}
-      type={t}
       onClick={onClick}
       className={classNames.join(' ')}
       style={style}
@@ -82,4 +81,4 @@ const Btn = ({
   )
 }
 
-export default Btn
+export default Badge

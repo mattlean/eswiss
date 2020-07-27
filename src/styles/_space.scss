@@ -1,0 +1,20 @@
+@use './size';
+
+:root {
+  --space-1: #{size.$s4};
+  --space-2: #{size.$s8};
+  --space-3: #{size.$s12};
+  --space-4: #{size.$s16};
+  --space-5: #{size.$s24};
+  --space-6: #{size.$s32};
+  --space-7: #{size.$s48};
+  --space-8: #{size.$s64};
+  --space-9: #{size.$s96};
+  --space-10: #{size.$s128};
+  --space-11: #{size.$s192};
+  --space-12: #{size.$s256};
+  --space-13: #{size.$s384};
+  --space-14: #{size.$s512};
+  --space-15: #{size.$s640};
+  --space-16: #{size.$s768};
+}

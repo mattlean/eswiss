@@ -1,8 +1,6 @@
-@use '../../styles/color';
-
 .btn {
-  --bg: #{color.$primary};
-  --color: #{color.$alt};
+  --bg: var(--primary);
+  --color: var(--secondary);
   --padding: 0.5rem 1rem;
 
   background: var(--bg);
@@ -12,8 +10,8 @@
 
   &.outline {
     --bg: unset;
-    --border: 0.2rem solid #{color.$primary};
-    --color: #{color.$primary};
+    --border: 0.2rem solid var(--primary);
+    --color: var(--primary);
 
     background: var(--bg);
     color: var(--color);

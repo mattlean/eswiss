@@ -27,6 +27,8 @@ export interface Props {
   onOpen?: (...args: any[]) => void
   overlayClassName?: string
   overlayStyle?: object
+  overrideClassName?: boolean
+  style?: object
   useAriaHidden?: boolean
   useAriaModal?: boolean
 }
@@ -47,11 +49,13 @@ export interface Props {
  * @prop {boolean} [isFull] Enable fullscreen if true
  * @prop {boolean} [isOpen] Unhide modal if true
  * @prop {string} [modalClassName] Modal CSS class attribute value to append to default value. Overrides className prop.
- * @prop {object} [modalStyle] Modal style attribute value
+ * @prop {object} [modalStyle] Modal style attribute value. Overrides style prop.
  * @prop {(event?: MouseEvent<HTMLButtonElement>) => void} [onClose] Function to run when close event is triggered
  * @prop {(...args: any[]) => void} [onOpen] Function to run when open event is triggered
  * @prop {string} [overlayClassName] Overlay CSS class attribute value to append to default value.
+ * @prop {boolean} [overrideClassName] Override default class attribute values if true
  * @prop {object} [overlayStyle] Overlay style attribute value
+ * @prop {object} [style] Modal style attribute value. Overwritten by modalStyle prop.
  * @prop {boolean} [useAriaHidden] Use aria-hidden attribute on modal when it is closed if true
  * @prop {boolean} [useAriaModal] Use aria-modal attribute on modal when it is open. Defaults to true if useAriaHidden is not set.
  */
@@ -75,11 +79,14 @@ const Modal = ({
   onOpen,
   overlayClassName,
   overlayStyle,
+  overrideClassName,
+  style,
   useAriaHidden,
   useAriaModal,
 }: Props) => {
-  const MODAL_OPEN_CLASS = 'modal-open'
+  const MODAL_OPEN_CLASS = 'modal-open' // CSS class that controls if modal is open visually
 
+  // Use aria-modal in default conditions
   if (useAriaModal === undefined && useAriaHidden === undefined) {
     useAriaModal = true
   }
@@ -122,7 +129,12 @@ const Modal = ({
 
     // Remove modal-open CSS class on body on unmount
     return () => document.body.classList.remove(MODAL_OPEN_CLASS)
-  }, [isOpen, tabNavStart]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [allowBgScroll, hideEleWithAria, isOpen, onOpen, tabNavStart])
+
+  // Remove modal-open CSS class from body element if allowBgScroll is changed to false
+  useEffect(() => {
+    if (!allowBgScroll) document.body.classList.remove(MODAL_OPEN_CLASS)
+  }, [allowBgScroll])
 
   /**
    * Function called when onClose event is triggered
@@ -196,13 +208,14 @@ const Modal = ({
       currModalEle.addEventListener('keydown', trapTab)
       return () => currModalEle.removeEventListener('keydown', trapTab)
     }
-  }, [hideEleWithAria, tabNavStart, tabNavEnd]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [tabNavStart, tabNavEnd]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const overlayEle = useRef<HTMLDivElement>(null)
 
+  // Handle overlay click event listener
   useEffect(() => {
     if (closeOnOverlayClick) {
-      if (overlayEle.current) {
+      if (overlayEle && overlayEle.current) {
         const currModalOverlayEle = overlayEle.current
 
         /**
@@ -224,7 +237,7 @@ const Modal = ({
           currModalOverlayEle.removeEventListener('click', clickOverlay)
       }
     }
-  }, [closeOnOverlayClick, hideEleWithAria]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [closeOnOverlayClick]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Auto-center modal if conditions are met
   const viewportWidth = useViewportWidth()
@@ -233,44 +246,53 @@ const Modal = ({
     if (modalEle && modalEle.current) {
       if (autoCenterH) {
         if (modalEle.current.offsetWidth < viewportWidth) {
-          modalEle.current.classList.add('modal-hcenter')
+          modalEle.current.classList.add('modal-centerh')
         } else {
-          modalEle.current.classList.remove('modal-hcenter')
+          modalEle.current.classList.remove('modal-centerh')
         }
       }
 
       if (autoCenterV) {
         if (modalEle.current.offsetHeight < viewportHeight) {
-          modalEle.current.classList.add('modal-vcenter')
+          modalEle.current.classList.add('modal-centerv')
         } else {
-          modalEle.current.classList.remove('modal-vcenter')
+          modalEle.current.classList.remove('modal-centerv')
         }
       }
     }
-  }, [viewportWidth, viewportHeight]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [autoCenterH, autoCenterV, viewportHeight, viewportWidth])
 
-  // Apply CSS class names
-  let mc = 'modal'
-  let oc = 'modal-overlay'
-  if (isOpen) {
-    oc += ` ${MODAL_OPEN_CLASS}`
-  }
-
-  if (modalClassName) {
-    mc += ` ${modalClassName}`
-  } else if (className) {
-    mc += ` ${className}`
-  }
-
-  if (isFull) mc += ' modal-full'
-
-  if (overlayClassName) {
-    oc += ` ${overlayClassName}`
-  }
-
+  // Assign conditional aria attributes
   const ariaHiddenVal = useAriaHidden && !isOpen ? true : undefined
   const ariaModalVal = useAriaModal && isOpen ? true : undefined
 
+  // Apply CSS class names
+  let modalClassNames = []
+  let overlayClassNames = []
+  if (!overrideClassName) {
+    modalClassNames.push('modal')
+    overlayClassNames.push('modal-overlay')
+    if (isOpen) overlayClassNames.push(MODAL_OPEN_CLASS)
+    if (isFull) modalClassNames.push('modal-full')
+  }
+
+  if (modalClassName) {
+    modalClassNames.push(modalClassName)
+  } else if (className) {
+    modalClassNames.push(className)
+  }
+
+  if (overlayClassName) overlayClassNames.push(overlayClassName)
+
+  // Apply style
+  let s
+  if (modalStyle) {
+    s = modalStyle
+  } else if (style) {
+    s = style
+  }
+
+  // Render component
   return (
     <div
       ref={overlayEle}
@@ -280,10 +302,10 @@ const Modal = ({
       aria-hidden={ariaHiddenVal}
       aria-modal={ariaModalVal}
       role="dialog"
-      className={oc}
+      className={overlayClassNames.join(' ')}
       style={overlayStyle}
     >
-      <section ref={modalEle} className={mc} style={modalStyle}>
+      <section ref={modalEle} className={modalClassNames.join(' ')} style={s}>
         <button
           type="button"
           aria-label="Close Modal"

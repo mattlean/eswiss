@@ -1,0 +1,32 @@
+@use '../../styles/size';
+
+.badge {
+  --bg: unset;
+  --border-radius: #{size.$s20};
+  --color: var(--grey-3);
+  --display: inline-block;
+  --padding: 0.5em;
+  --border: 1px solid var(--color);
+
+  background: var(--bg);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  color: var(--color);
+  display: var(--display);
+  padding: var(--padding);
+
+  &.badge-clickable {
+    cursor: pointer;
+  }
+
+  &.badge-fill {
+    --bg: var(--grey-3);
+    --border: none;
+    --color: var(--secondary);
+  }
+
+  &.badge-wide {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}

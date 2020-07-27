@@ -1,25 +1,70 @@
 @use './size';
 
+$disp-thin: 100;
+$disp-normal: 400;
+$disp-bold: 700;
+$disp-heavy: 900;
+$txt-thin: 100;
+$txt-normal: 400;
+$txt-bold: 700;
+$txt-heavy: 900;
+
+:root {
+  // Weights
+  --disp-thin: #{$disp-thin};
+  --disp-normal: #{$disp-normal};
+  --disp-bold: #{$disp-bold};
+  --disp-heavy: #{$disp-heavy};
+  --txt-thin: #{$txt-thin};
+  --txt-normal: #{$txt-normal};
+  --txt-bold: #{$txt-bold};
+  --txt-heavy: #{$txt-heavy};
+
+  // Size
+  --disp-1: #{size.$s12};
+  --disp-2: #{size.$s14};
+  --disp-3: #{size.$s16};
+  --disp-4: #{size.$s18};
+  --disp-5: #{size.$s20};
+  --disp-6: #{size.$s24};
+  --disp-7: #{size.$s30};
+  --disp-8: #{size.$s36};
+  --disp-9: #{size.$s48};
+  --disp-10: #{size.$s60};
+  --disp-11: #{size.$s72};
+  --txt-1: #{size.$s12};
+  --txt-2: #{size.$s14};
+  --txt-3: #{size.$s16};
+  --txt-4: #{size.$s18};
+  --txt-5: #{size.$s20};
+  --txt-6: #{size.$s24};
+  --txt-7: #{size.$s30};
+  --txt-8: #{size.$s36};
+  --txt-9: #{size.$s48};
+  --txt-10: #{size.$s60};
+  --txt-11: #{size.$s72};
+}
+
 .heading1 {
-  font-size: size.$size-96;
+  font-size: var(--txt-11);
 }
 
 .heading2 {
-  font-size: size.$size-64;
+  font-size: var(--txt-10);
 }
 
 .heading3 {
-  font-size: size.$size-48;
+  font-size: var(--txt-9);
 }
 
 .heading4 {
-  font-size: size.$size-32;
+  font-size: var(--txt-7);
 }
 
 .heading5 {
-  font-size: size.$size-24;
+  font-size: var(--txt-5);
 }
 
 .heading6 {
-  font-size: size.$size-16;
+  font-size: var(--txt-3);
 }
