@@ -1,6 +1,6 @@
-# Visuals
+# Stylesheet Code
 
-For eswiss, **visual code** is defined as any Sass and CSS related code.
+For eswiss, **stylesheet code** is defined as any Sass and CSS related code.
 
 Visual code's responsibilities are divided into three different categories:
 
@@ -14,17 +14,21 @@ The distinction between each category is important to understand as it does affe
 
 [Sass](https://sass-lang.com) was chosen over some other options because it extends the capabilities of CSS without deviating too far from the direction of the language, making it very easy to pick up for designers and developers who come a vanilla CSS background. It is also extremely easy to setup with [Create React App](https://create-react-app.dev), which is a popular toolchain to use with eswiss since React is the supported JavaScript library.
 
-While CSS-in-JS solutions are being looked into for potential future support, at the moment eswiss does not support them officially. There is certainly nothing stopping you from setting it up on your own though, as most CSS-in-JS solutions should still allow you to follow eswiss visual code guidelines.
+While CSS-in-JS solutions are being looked into for potential future support, at the moment eswiss does not support them officially. There is certainly nothing stopping you from setting it up on your own though, as most CSS-in-JS solutions should still allow you to follow eswiss stylesheet code guidelines.
 
-## Visual Code Writing Guidelines
+## Stylesheet Code Writing Guidelines
 
-## Importing Visual Code
+## Importing Stylesheet Code
 
-eswiss recommends that you use `@use` rules to load stylesheets within a stylesheet, and then import a main stylesheet as an entry to your whole visual codebase in your script code.
+eswiss recommends that you use load Sass stylesheets within a central Sass stylesheet, and then import a main stylesheet as an entry to your whole visual codebase in your script code.
+
+When loading Sass stylesheets within other Sass stylesheets, the `@use` rule is preferred over the `@import` rule as it is [recommended by Sass website](https://sass-lang.com/documentation/at-rules/use).
 
 ### Separation of Concerns: Style, Layout, and Animation
 
-### Style: Separate DOM Hierarchy from Visual Hierarchy
+### Separating DOM Hierarchy from Visual Hierarchy
+
+### Utility Class for Style
 
 ### CSS Custom Properties vs. Sass Variables
 

@@ -1,19 +1,19 @@
 $k: #000;
-$grey-1: #242424;
-$grey-2: #434343;
-$grey-3: #656565;
-$grey-4: #898989;
-$grey-5: #afafaf;
-$grey-6: #d6d6d6;
+$grey-a: #242424;
+$grey-b: #434343;
+$grey-c: #656565;
+$grey-d: #898989;
+$grey-e: #afafaf;
+$grey-f: #d6d6d6;
 $w: #fff;
 
 :root {
   --primary: #{$k};
   --secondary: #{$w};
-  --grey-1: #{$grey-1};
-  --grey-2: #{$grey-2};
-  --grey-3: #{$grey-3};
-  --grey-4: #{$grey-4};
-  --grey-5: #{$grey-5};
-  --grey-6: #{$grey-6};
+  --grey-1: #{$grey-a};
+  --grey-2: #{$grey-b};
+  --grey-3: #{$grey-c};
+  --grey-4: #{$grey-d};
+  --grey-5: #{$grey-e};
+  --grey-6: #{$grey-f};
 }
