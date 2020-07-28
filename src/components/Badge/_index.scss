@@ -1,8 +1,6 @@
-@use '../../styles/size';
-
 .badge {
   --bg: unset;
-  --border-radius: #{size.$s20};
+  --border-radius: 20px;
   --color: var(--grey-3);
   --display: inline-block;
   --padding: 0.5em;

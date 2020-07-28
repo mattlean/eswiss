@@ -1,5 +1,3 @@
-@use '../../styles/color';
-
 body.modal-open {
   overflow: hidden;
 }
@@ -22,7 +20,7 @@ body.modal-open {
 }
 
 .modal {
-  --bg: color.$w;
+  --bg: #fff;
   --margin: 2rem;
   --padding: 2rem;
 
