@@ -9,6 +9,7 @@ body.modal-open {
 
   &.modal-open {
     background: var(--bg);
+
     bottom: 0;
     display: block;
     left: 0;
@@ -25,6 +26,7 @@ body.modal-open {
   --padding: 2rem;
 
   background-color: var(--bg);
+
   margin: var(--margin);
   padding: var(--padding);
   position: relative;
@@ -78,11 +80,14 @@ body.modal-open {
     --right: 2rem;
     --top: 1.8rem;
 
-    bottom: var(--bottom);
     font-weight: var(--font-weight);
+
+    bottom: var(--bottom);
     left: var(--left);
     position: absolute;
     right: var(--right);
     top: var(--top);
+
+    animation: 1s ease-in;
   }
 }

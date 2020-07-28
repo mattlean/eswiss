@@ -24,13 +24,15 @@ Styles and layouts might have some overlap in responsibility as you may want to 
 
 ### Regular Paradigm for Layout & Animation, Utility-First Paradigm for Style
 
-When working with style code, the utility-first paradigm is prioritized. When working with layout or animation, the regular paradigm is prioritized. This will mean that most of your style code will reside within your JSX as values for `className` attributes. Your layout and animation code will then reside exclusively in your Sass files.
+When working with layout or animation code, the regular paradigm is utilized. When working with style code, the utility-first paradigm is prioritized. This will mean that most of your layout and animation code will reside exclusively in your Sass files. Your style code will reside mostly within your JSX as values for `className` attributes.
+
+// TODO: Why two different paradigms?
 
 ### Inline Style Paradigm Use
 
 Use of the inline style paradigm is allowed but should be used sparingly as it does not take advantage of Sass and does not work easily with responsive design. Use of the utility-first paradigm or regular paradigm should always be prioritized first.
 
-_Note: In this case, inline style is referring to the use of the `style` attribute on an HTML tag, not the eswiss style responsibility._
+_Note: In this case, inline style is referring to the use of the `style` attribute on HTML tags, not the eswiss style responsibility._
 
 ### Separate Style from DOM Hierarchy
 
@@ -48,7 +50,7 @@ When loading Sass stylesheets within other Sass stylesheets, the `@use` rule is 
 
 ### CSS Custom Properties vs. Sass Variables
 
-CSS custom properties (which are also known as CSS variables or cascading variables) and Sass variables seemingly offer similar functionality, but when following eswiss guidelines they have different purposes.
+CSS custom properties (also known as CSS variables or cascading variables) and Sass variables seemingly offer similar functionality, but when following eswiss guidelines they have different purposes.
 
 Sass variables should be used for unchanging values, similar to how `const` is used for primitive values in script code. CSS custom properties should be used for changing values, similar to how `let` is used in script code.
 
