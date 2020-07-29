@@ -4,13 +4,15 @@
   "rules": {
     "at-rule-no-unknown": [
       true,
-      { "ignoreAtRules": ["extend", "include", "mixin", "use"] }
+      {
+        "ignoreAtRules": ["debug", "each", "extend", "include", "mixin", "use"]
+      }
     ],
     "declaration-empty-line-before": null,
     "order/order": [["custom-properties"], { "unspecified": "bottom" }],
     "order/properties-order": [
       {
-        "groupName": "style",
+        "groupName": "appearance",
         "emptyLineBefore": "always",
         "properties": [
           "background",

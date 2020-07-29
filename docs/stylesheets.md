@@ -2,9 +2,9 @@
 
 ## Why Sass?
 
-[Sass](https://sass-lang.com) was chosen over some other options because it extends the capabilities of CSS without deviating too far from the direction of the language, making it very easy to pick up for designers and developers who come a vanilla CSS background. It is also extremely easy to setup with [Create React App](https://create-react-app.dev), which is a popular toolchain to use with eswiss since React is the supported JavaScript library.
+[Sass](https://sass-lang.com) was chosen because it extends the capabilities of CSS without deviating too far from the direction of the language, making it very easy to pick up for designers and developers who come a vanilla CSS background. It is also extremely easy to setup with [Create React App](https://create-react-app.dev), which is a popular toolchain to use with eswiss since React is the supported JavaScript library.
 
-While CSS-in-JS solutions are being looked into for potential future support, at the moment eswiss does not support them officially. There is certainly nothing stopping you from setting it up on your own though, as most CSS-in-JS solutions should still allow you to follow eswiss stylesheet code guidelines.
+While CSS-in-JS solutions are being looked into, at the moment eswiss does not support them officially. There is certainly nothing stopping you from setting it up on your own though, as most CSS-in-JS solutions should still allow you to follow eswiss stylesheet code guidelines.
 
 ## Stylesheet Code Guidelines
 
@@ -14,33 +14,46 @@ Stylesheet code is divided into three different categories:
 
 | Responsibility | Description                                                                                    |
 | -------------- | ---------------------------------------------------------------------------------------------- |
-| **Style**      | The aesthetic features of UI, such as background, color, typography, etc.                      |
+| **Appearance** | The aesthetic features of UI, such as background, color, typography, etc.                      |
 | **Layout**     | The spacing and positioning of UI, such as margin, padding, transform, grid, flex, float, etc. |
 | **Animation**  | The animation and transition of UI, such as fade, movement, etc.                               |
 
 The distinction between each category is important to understand as a particular code's responsibility will influence the way you write and organize it.
 
-Styles and layouts might have some overlap in responsibility as you may want to add default layout-related features to style code. It is recommended that you keep layout properties in style code to a minimum, and also understand that layout properties in layout code should always take precedence over and layout properties defined in style code.
+Appearance and layouts might have some overlap in responsibility as you may want to add default layout-related features to appearance code. It is recommended that you keep layout properties in appearance code to a minimum, and also understand that layout properties in layout code should always take precedence over and layout properties defined in appearance code.
 
 ### Regular Paradigm for Layout & Animation, Utility-First Paradigm for Style
 
-When working with layout or animation code, the regular paradigm is utilized. When working with style code, the utility-first paradigm is prioritized. This will mean that most of your layout and animation code will reside exclusively in your Sass files. Your style code will reside mostly within your JSX as values for `className` attributes.
+When working with layout or animation code, the regular paradigm is utilized. When working with appearance code, the utility-first paradigm is prioritized. This will mean that most of your layout and animation code will reside exclusively in your Sass files. Your appearance code will reside mostly within your JSX as values for `className` attributes, but will occassionally exist in Sass files for the less common cases where the utility-first paradigm is not appropriate.
 
 // TODO: Why two different paradigms?
+
+### Regular Paradigm Formatting
+
+When writing stylesheet code in the regular paradigm, you are to separate your properties into sections in this order:
+
+1. Custom Properties
+2. Appearance
+3. Layout
+4. Animation
+
+Each section is separated by at least one newline. Within each section, properties are ordered alphabetically.
+
+To enforce this formatting, eswiss recommends using [stylelint](https://stylelint.io) with [stylelint-order](https://github.com/hudochenkov/stylelint-order).
+
+// TODO: Include stylelint config
+
+### Class Naming Convention
+
+It is important to write class names that make sense. Reading a class name should easily give a general idea on what it could do or at least what it's used for.
+
+Use of dashes to separate words is preferred over camelCasing.
+
+When writing class names to be used exclusively by a particular component, the class names should be prefixed by the component name.
 
 ### Inline Style Paradigm Use
 
 Use of the inline style paradigm is allowed but should be used sparingly as it does not take advantage of Sass and does not work easily with responsive design. Use of the utility-first paradigm or regular paradigm should always be prioritized first.
-
-_Note: In this case, inline style is referring to the use of the `style` attribute on HTML tags, not the eswiss style responsibility._
-
-### Separate Style from DOM Hierarchy
-
-Never use default styles to determine what type of HTML tag to use. Let the decision be driven by DOM hierarchy instead.
-
-For example, let's say you want to make a first, primary heading title for a page. You determine that the default font size for the `h1` tag is too large, so you use an `h2` tag instead because its default font size coincidentally is what you want. This is considered bad practice because the main heading title text for a page should be an `h1` tag to make the DOM hierarchy sensible. Keeping a sensible DOM hiearchy should always be prioritized first as it improves accessibility and inclusivity for users with disabilities and comprehensibility for search engine spiders.
-
-To solve default style issue, simply override the default font size with style code.
 
 ### Importing Stylesheet Code
 
@@ -58,6 +71,10 @@ It should be noted that because Sass variables are preprocessed, they cannot be 
 
 One caveat with CSS custom properties is that you can lose track where they are declared or how they cascade when there are a lot of them in a complex stylesheet structure. That is why in cases where custom property values do not change, Sass variables should be used instead.
 
-### Formatting
+### Separate Appearance from DOM Hierarchy
 
-eswiss recommends using [stylelint](https://stylelint.io) with [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard) and [stylelint-order](https://github.com/hudochenkov/stylelint-order).
+Never use default appearance to determine what type of HTML tag to use. Let the decision be driven by DOM hierarchy instead.
+
+For example, let's say you want to make a first, primary heading title for a page. You determine that the default font size for the `h1` tag is too large, so you use an `h2` tag instead because its default font size coincidentally is what you want. This is considered bad practice because the main heading title text for a page should be an `h1` tag to make the DOM hierarchy sensible. Keeping a sensible DOM hiearchy should always be prioritized first as it improves accessibility and inclusivity for users with disabilities and comprehensibility for search engine spiders.
+
+To solve default appearance issue, simply override the default font size with appearance code.

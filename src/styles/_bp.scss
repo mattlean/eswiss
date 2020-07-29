@@ -1,0 +1,27 @@
+/* Responsive Breakpoints */
+@use 'sass:map';
+@use './util';
+
+$bp: (
+  sm: 580px,
+  md: 770px,
+  lg: 990px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+/* Generate utility classes for breakpoints */
+// Iterate through breakpoints
+@each $bp-name, $bp-val in $bp {
+  // Iterate through utilities
+  @each $util-name, $util-map in util.$util {
+    @media (max-width: #{$bp-val}) {
+      // Iterate through utility
+      @each $util-val-name, $util-val-val in map.get($util-map, vals) {
+        .#{$bp-name}\:#{$util-name}-#{$util-val-name} {
+          #{map.get($util-map, prop)}: $util-val-val;
+        }
+      }
+    }
+  }
+}
