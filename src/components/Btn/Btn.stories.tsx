@@ -2,7 +2,7 @@ import React from 'react'
 import { action } from '@storybook/addon-actions'
 import { text, withKnobs } from '@storybook/addon-knobs'
 import Btn from './index'
-import './story.scss'
+import './_index.scss'
 
 export default {
   title: 'Button',

@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions'
 import { text, withKnobs } from '@storybook/addon-knobs'
 import Badge from './index'
 import Btn from '../Btn'
-import './story.scss'
+import './_index.scss'
 
 export default {
   title: 'Badge',
