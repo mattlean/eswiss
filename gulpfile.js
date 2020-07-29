@@ -29,7 +29,8 @@ const compileTS = () =>
     .pipe(sourceMapsWrite())
     .pipe(dest('dist'))
 
+// eslint-disable-next-line no-unused-vars
 const copyStyles = () =>
   src(['src/**/*.css', 'src/**/*.scss']).pipe(dest('dist'))
 
-exports.default = series(clean, compileTS, copyStyles)
+exports.default = series(clean, compileTS)

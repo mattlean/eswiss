@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions'
 import { text, withKnobs } from '@storybook/addon-knobs'
 import Badge from './index'
 import Btn from '../Btn'
-import './_index.scss'
+import './story.scss'
 
 export default {
   title: 'Badge',
@@ -22,7 +22,7 @@ export const Fill = () => (
 )
 
 export const BadgeAndHeading = () => (
-  <h1 className="heading4">
+  <h1 className="h4">
     {text('Heading Text', 'Lorem Ipsum')}{' '}
     <Badge fill={true} style={{ backgroundColor: 'red' }}>
       {text('Badge Text', 'New')}

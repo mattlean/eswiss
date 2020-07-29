@@ -1,0 +1,26 @@
+/* Standard Typography Classes */
+@use './scale/size';
+
+.h1 {
+  font-size: var(--txt-11);
+}
+
+.h2 {
+  font-size: var(--txt-10);
+}
+
+.h3 {
+  font-size: var(--txt-9);
+}
+
+.h4 {
+  font-size: var(--txt-7);
+}
+
+.h5 {
+  font-size: var(--txt-5);
+}
+
+.h6 {
+  font-size: var(--txt-3);
+}

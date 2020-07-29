@@ -3,8 +3,7 @@ import { action } from '@storybook/addon-actions'
 import { text, withKnobs } from '@storybook/addon-knobs'
 import Btn from '../Btn'
 import Modal from './index'
-import './_index.scss'
-import '../Btn/_index.scss'
+import './story.scss'
 
 export default {
   title: 'Modal',
@@ -55,17 +54,13 @@ export const ModalWithWidth = () => (
 
 export const Heading = () => (
   <Modal isOpen={true} onClose={action('Triggered onClose event')}>
-    <h1 className="modal-heading heading4">
-      {text('Heading Text', 'Lorem Ipsum')}
-    </h1>
+    <h1 className="modal-h h4">{text('Heading Text', 'Lorem Ipsum')}</h1>
   </Modal>
 )
 
 export const HeadingAndText = () => (
   <Modal isOpen={true} onClose={action('Triggered onClose event')}>
-    <h1 className="modal-heading heading4">
-      {text('Heading Text', 'Lorem Ipsum')}
-    </h1>
+    <h1 className="modal-h h4">{text('Heading Text', 'Lorem Ipsum')}</h1>
     <p>
       {text(
         'Body Text',
@@ -81,9 +76,7 @@ export const HeadingAndTextFullscreen = () => (
     isOpen={true}
     onClose={action('Triggered onClose event')}
   >
-    <h1 className="modal-heading heading4">
-      {text('Heading Text', 'Lorem Ipsum')}
-    </h1>
+    <h1 className="modal-h h4">{text('Heading Text', 'Lorem Ipsum')}</h1>
     <p>
       {text(
         'Body Text',
@@ -172,9 +165,7 @@ const CompositeContentAndModal = () => {
         onClose={() => setIsOpen(false)}
         modalStyle={{ maxWidth: 800 }}
       >
-        <h1 className="modal-heading heading4">
-          {text('Heading', 'Lorem Ipsum', MODAL)}
-        </h1>
+        <h1 className="modal-h h4">{text('Heading', 'Lorem Ipsum', MODAL)}</h1>
         <p>
           {text(
             'Body',

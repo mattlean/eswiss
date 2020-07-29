@@ -1,9 +1,11 @@
-@use 'sass:map';
+/* Layout Utility Classes */
+@use './gen';
 
-$util: (
-  fs: (
-    prop: font-size,
+$data: (
+  m: (
+    prop: margin,
     vals: (
+      0: 0,
       1: 1em,
       1\.25: 1.25em,
       1\.5: 1.5em,
@@ -94,6 +96,29 @@ $util: (
   ),
   mt: (
     prop: margin-top,
+    vals: (
+      0: 0,
+      1: 1em,
+      1\.25: 1.25em,
+      1\.5: 1.5em,
+      1\.75: 1.75em,
+      2: 2em,
+      3: 3em,
+      4: 4em,
+      5: 5em,
+      1rem: 1rem,
+      1\.25rem: 1.25rem,
+      1\.5rem: 1.5rem,
+      1\.75rem: 1.75rem,
+      2rem: 2rem,
+      3rem: 3rem,
+      4rem: 4rem,
+      5rem: 5rem,
+      auto: auto,
+    ),
+  ),
+  p: (
+    prop: padding,
     vals: (
       0: 0,
       1: 1em,
@@ -209,13 +234,4 @@ $util: (
   ),
 );
 
-/* Generate utility classes unassociated with breakpoints */
-// Iterate through utilities
-@each $util-name, $util-map in $util {
-  // Iterate through utility
-  @each $util-val-name, $util-val-val in map.get($util-map, vals) {
-    .#{$util-name}-#{$util-val-name} {
-      #{map.get($util-map, prop)}: $util-val-val;
-    }
-  }
-}
+@include gen.gen-classes($data);
