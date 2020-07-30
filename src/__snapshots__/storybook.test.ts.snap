@@ -8,23 +8,30 @@ exports[`Storyshots Badge Badge And Button 1`] = `
   Notifications
    
   <div
-    className="badge badge-fill badge-wide"
+    className="badge badge-fill ml-0.5 pb-0.25 pl-0.5 pr-0.5 pt-0.25"
     style={
       Object {
         "backgroundColor": "blue",
-        "marginLeft": "0.5em",
-        "padding": "0.4em 0.6em 0.25em",
       }
     }
   >
-    9
+    <span
+      style={
+        Object {
+          "display": "block",
+          "transform": "translateY(2px)",
+        }
+      }
+    >
+      9
+    </span>
   </div>
 </button>
 `;
 
 exports[`Storyshots Badge Badge And Heading 1`] = `
 <h1
-  className="heading4"
+  className="h4"
 >
   Lorem Ipsum
    
@@ -36,7 +43,7 @@ exports[`Storyshots Badge Badge And Heading 1`] = `
       }
     }
   >
-    New
+    Live
   </div>
 </h1>
 `;
@@ -58,22 +65,12 @@ Array [
     #foo
   </div>,
   <div
-    className="badge badge-wide"
-    style={
-      Object {
-        "marginLeft": "1em",
-      }
-    }
+    className="badge badge-wide ml-1"
   >
     #bar
   </div>,
   <div
-    className="badge badge-wide"
-    style={
-      Object {
-        "marginLeft": "1em",
-      }
-    }
+    className="badge badge-wide ml-1"
   >
     #baz
   </div>,
@@ -230,7 +227,7 @@ Array [
         className="modal-content"
       >
         <h1
-          className="modal-heading heading4"
+          className="modal-h h4"
         >
           Lorem Ipsum
         </h1>
@@ -264,7 +261,7 @@ exports[`Storyshots Modal Heading 1`] = `
       className="modal-content"
     >
       <h1
-        className="modal-heading heading4"
+        className="modal-h h4"
       >
         Lorem Ipsum
       </h1>
@@ -294,7 +291,7 @@ exports[`Storyshots Modal Heading And Text 1`] = `
       className="modal-content"
     >
       <h1
-        className="modal-heading heading4"
+        className="modal-h h4"
       >
         Lorem Ipsum
       </h1>
@@ -327,7 +324,7 @@ exports[`Storyshots Modal Heading And Text Fullscreen 1`] = `
       className="modal-content"
     >
       <h1
-        className="modal-heading heading4"
+        className="modal-h h4"
       >
         Lorem Ipsum
       </h1>

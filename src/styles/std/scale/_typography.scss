@@ -1,3 +1,4 @@
+/* Typography Scale */
 @use './size';
 
 $disp-thin: 100;
@@ -43,28 +44,4 @@ $txt-heavy: 900;
   --txt-9: #{size.$s48};
   --txt-10: #{size.$s60};
   --txt-11: #{size.$s72};
-}
-
-.heading1 {
-  font-size: var(--txt-11);
-}
-
-.heading2 {
-  font-size: var(--txt-10);
-}
-
-.heading3 {
-  font-size: var(--txt-9);
-}
-
-.heading4 {
-  font-size: var(--txt-7);
-}
-
-.heading5 {
-  font-size: var(--txt-5);
-}
-
-.heading6 {
-  font-size: var(--txt-3);
 }

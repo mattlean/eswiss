@@ -1,12 +1,19 @@
 .btn {
   --bg: var(--primary);
   --color: var(--secondary);
-  --padding: 0.5rem 1rem;
+  --pb: 0.5em;
+  --pl: 1em;
+  --pr: 1em;
+  --pt: 0.5em;
 
   background: var(--bg);
   color: var(--color);
   font-weight: bold;
-  padding: var(--padding);
+
+  padding-bottom: var(--pb);
+  padding-left: var(--pl);
+  padding-right: var(--pr);
+  padding-top: var(--pt);
 
   &.outline {
     --bg: unset;
@@ -15,12 +22,14 @@
 
     background: var(--bg);
     color: var(--color);
+
     position: relative;
 
     &::before {
       border: var(--border);
-      bottom: 0;
       content: '';
+
+      bottom: 0;
       left: 0;
       position: absolute;
       right: 0;

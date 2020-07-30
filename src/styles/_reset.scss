@@ -1,3 +1,4 @@
+/* Style Reset */
 *,
 *::after,
 *::before {
@@ -12,6 +13,7 @@ body {
   color: $default-color;
   font: normal $default-font-size $default-font-family;
   line-height: 1.25em;
+
   margin: 0;
 }
 
@@ -19,6 +21,7 @@ button {
   background-color: unset;
   border: 0;
   font-size: 1rem;
+
   margin: 0;
   padding: 0;
 }
@@ -30,6 +33,7 @@ h4,
 h5,
 h6 {
   font-weight: bold;
+
   margin: 0;
   padding: 0;
 }
