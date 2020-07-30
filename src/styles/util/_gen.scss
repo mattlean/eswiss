@@ -5,7 +5,7 @@
   @each $util-name, $util-map in $util-data {
     @each $util-val-name, $util-val-val in map.get($util-map, vals) {
       .#{$util-name}-#{$util-val-name} {
-        #{map.get($util-map, prop)}: $util-val-val;
+        #{map.get($util-map, prop)}: $util-val-val !important;
       }
     }
   }
@@ -17,7 +17,7 @@
       @media (max-width: #{$bp-val}) {
         @each $util-val-name, $util-val-val in map.get($util-map, vals) {
           .#{$bp-name}\:#{$util-name}-#{$util-val-name} {
-            #{map.get($util-map, prop)}: $util-val-val;
+            #{map.get($util-map, prop)}: $util-val-val !important;
           }
         }
       }

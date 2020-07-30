@@ -22,22 +22,34 @@ body.modal-open {
 
 .modal {
   --bg: #fff;
-  --margin: 2rem;
-  --padding: 2rem;
+  --mb: 2rem;
+  --ml: 2rem;
+  --mr: 2rem;
+  --mt: 2rem;
+  --pb: 2rem;
+  --pl: 2rem;
+  --pr: 2rem;
+  --pt: 2rem;
 
   background-color: var(--bg);
 
-  margin: var(--margin);
-  padding: var(--padding);
+  margin-bottom: var(--mb);
+  margin-left: var(--ml);
+  margin-right: var(--mr);
+  margin-top: var(--mt);
+  padding-bottom: var(--pb);
+  padding-left: var(--pl);
+  padding-right: var(--pr);
+  padding-top: var(--pt);
   position: relative;
 
   &.modal-centerh {
-    left: calc(50% - var(--margin));
+    left: calc(50% - var(--ml));
     transform: translateX(-50%);
   }
 
   &.modal-centerv {
-    top: calc(50% - var(--margin));
+    top: calc(50% - var(--mt));
     transform: translateY(-50%);
   }
 

@@ -25,7 +25,7 @@ export const BadgeAndHeading = () => (
   <h1 className="h4">
     {text('Heading Text', 'Lorem Ipsum')}{' '}
     <Badge fill={true} style={{ backgroundColor: 'red' }}>
-      {text('Badge Text', 'New')}
+      {text('Badge Text', 'Live')}
     </Badge>
   </h1>
 )
@@ -35,14 +35,14 @@ export const BadgeAndButton = () => (
     Notifications{' '}
     <Badge
       fill={true}
-      wide={true}
       style={{
         backgroundColor: 'blue',
-        marginLeft: '0.5em',
-        padding: '0.4em 0.6em 0.25em',
       }}
+      className="ml-0.5 pb-0.25 pl-0.5 pr-0.5 pt-0.25"
     >
-      {text('Badge Text', '9')}
+      <span style={{ display: 'block', transform: 'translateY(2px)' }}>
+        {text('Badge Text', '9')}
+      </span>
     </Badge>
   </Btn>
 )
@@ -56,10 +56,10 @@ export const BadgeClick = () => (
 export const BadgeList = () => (
   <>
     <Badge wide={true}>#foo</Badge>
-    <Badge wide={true} style={{ marginLeft: '1em' }}>
+    <Badge wide={true} className="ml-1">
       #bar
     </Badge>
-    <Badge wide={true} style={{ marginLeft: '1em' }}>
+    <Badge wide={true} className="ml-1">
       #baz
     </Badge>
   </>

@@ -3,7 +3,10 @@
   --border-radius: 20px;
   --color: var(--grey-3);
   --display: inline-block;
-  --padding: 0.5em;
+  --pb: 0.5em;
+  --pl: 0.5em;
+  --pr: 0.5em;
+  --pt: 0.5em;
   --border: 1px solid var(--color);
 
   background: var(--bg);
@@ -12,7 +15,10 @@
   color: var(--color);
 
   display: var(--display);
-  padding: var(--padding);
+  padding-bottom: var(--pb);
+  padding-left: var(--pl);
+  padding-right: var(--pr);
+  padding-top: var(--pt);
 
   &.badge-clickable {
     cursor: pointer;
@@ -25,7 +31,7 @@
   }
 
   &.badge-wide {
-    padding-left: 1em;
-    padding-right: 1em;
+    --pl: 1em;
+    --pr: 1em;
   }
 }
