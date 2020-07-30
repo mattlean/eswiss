@@ -1,6 +1,6 @@
 {
   "name": "eswiss",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
