@@ -40,13 +40,13 @@ $data: (
       5rem: 5rem,
       auto: auto,
     ),
-    td: (
-      prop: text-decoration,
-      vals: (
-        line-through: line-through,
-        overline: overline,
-        underline: underline,
-      ),
+  ),
+  td: (
+    prop: text-decoration,
+    vals: (
+      line-through: line-through,
+      overline: overline,
+      underline: underline,
     ),
   ),
 );
