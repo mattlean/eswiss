@@ -2,6 +2,17 @@
 @use './gen';
 
 $data: (
+  d: (
+    prop: display,
+    vals: (
+      block: block,
+      flex: flex,
+      grid: grid,
+      inline: inline,
+      inline-block: inline-block,
+      none: none,
+    ),
+  ),
   fs: (
     prop: font-size,
     vals: (
@@ -28,6 +39,14 @@ $data: (
       4rem: 4rem,
       5rem: 5rem,
       auto: auto,
+    ),
+    td: (
+      prop: text-decoration,
+      vals: (
+        line-through: line-through,
+        overline: overline,
+        underline: underline,
+      ),
     ),
   ),
 );
