@@ -1,8 +1,15 @@
-/* Responsive Utility Classes */
-@use '../../util/appearance';
+/* Standard Responsive Utility Classes */
 @use '../../util/gen';
+
+/* General */
+@use './appearance';
+
+/* Standard */
+@use '../../util/appearance' as stdAppearance;
 @use '../../util/layout';
 @use '../scale/bp';
 
 @include gen.gen-responsive-classes(bp.$bp, appearance.$data);
+
+@include gen.gen-responsive-classes(bp.$bp, stdAppearance.$data);
 @include gen.gen-responsive-classes(bp.$bp, layout.$data);
