@@ -1,0 +1,66 @@
+/* Standard Appearance Classes */
+@use '../util/gen';
+@use '../scale/typography';
+
+$data: (
+  disp: (
+    prop: font-size,
+    vals: (
+      1: var(--disp-1),
+      2: var(--disp-2),
+      3: var(--disp-3),
+      4: var(--disp-4),
+      5: var(--disp-5),
+      6: var(--disp-6),
+      7: var(--disp-7),
+      8: var(--disp-8),
+      9: var(--disp-9),
+      10: var(--disp-10),
+      11: var(--disp-11),
+    ),
+  ),
+  dispw: (
+    prop: font-weight,
+    vals: (
+      thin: var(--disp-thin),
+      normal: var(--disp-normal),
+      bold: var(--disp-bold),
+      heavy: var(--disp-heavy),
+    ),
+  ),
+  fs: (
+    prop: font-style,
+    vals: (
+      normal: normal,
+      italic: italic,
+      oblique: oblique,
+    ),
+  ),
+  txt: (
+    prop: font-size,
+    vals: (
+      1: var(--txt-1),
+      2: var(--txt-2),
+      3: var(--txt-3),
+      4: var(--txt-4),
+      5: var(--txt-5),
+      6: var(--txt-6),
+      7: var(--txt-7),
+      8: var(--txt-8),
+      9: var(--txt-9),
+      10: var(--txt-10),
+      11: var(--txt-11),
+    ),
+    txtw: (
+      prop: font-weight,
+      vals: (
+        thin: var(--txt-thin),
+        normal: var(--txt-normal),
+        bold: var(--txt-bold),
+        heavy: var(--txt-heavy),
+      ),
+    ),
+  ),
+);
+
+@include gen.gen-classes($data);
