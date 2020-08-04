@@ -51,14 +51,14 @@ $data: (
       10: var(--txt-10),
       11: var(--txt-11),
     ),
-    txtw: (
-      prop: font-weight,
-      vals: (
-        thin: var(--txt-thin),
-        normal: var(--txt-normal),
-        bold: var(--txt-bold),
-        heavy: var(--txt-heavy),
-      ),
+  ),
+  txtw: (
+    prop: font-weight,
+    vals: (
+      thin: var(--txt-thin),
+      normal: var(--txt-normal),
+      bold: var(--txt-bold),
+      heavy: var(--txt-heavy),
     ),
   ),
 );
