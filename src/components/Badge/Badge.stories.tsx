@@ -22,7 +22,7 @@ export const Fill = () => (
 )
 
 export const BadgeAndHeading = () => (
-  <h1 className="h4">
+  <h1 className="disp-7">
     {text('Heading Text', 'Lorem Ipsum')}{' '}
     <Badge fill={true} style={{ backgroundColor: 'red' }}>
       {text('Badge Text', 'Live')}

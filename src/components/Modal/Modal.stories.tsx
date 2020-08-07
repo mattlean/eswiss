@@ -55,13 +55,13 @@ export const ModalWithWidth = () => (
 
 export const Heading = () => (
   <Modal isOpen={true} onClose={action('Triggered onClose event')}>
-    <h1 className="modal-h h4">{text('Heading Text', 'Lorem Ipsum')}</h1>
+    <h1 className="modal-h disp-7">{text('Heading Text', 'Lorem Ipsum')}</h1>
   </Modal>
 )
 
 export const HeadingAndText = () => (
   <Modal isOpen={true} onClose={action('Triggered onClose event')}>
-    <h1 className="modal-h h4">{text('Heading Text', 'Lorem Ipsum')}</h1>
+    <h1 className="modal-h disp-7">{text('Heading Text', 'Lorem Ipsum')}</h1>
     <p>
       {text(
         'Body Text',
@@ -77,7 +77,7 @@ export const HeadingAndTextFullscreen = () => (
     isOpen={true}
     onClose={action('Triggered onClose event')}
   >
-    <h1 className="modal-h h4">{text('Heading Text', 'Lorem Ipsum')}</h1>
+    <h1 className="modal-h disp-7">{text('Heading Text', 'Lorem Ipsum')}</h1>
     <p>
       {text(
         'Body Text',
@@ -166,7 +166,9 @@ const CompositeContentAndModal = () => {
         onClose={() => setIsOpen(false)}
         modalStyle={{ maxWidth: 800 }}
       >
-        <h1 className="modal-h h4">{text('Heading', 'Lorem Ipsum', MODAL)}</h1>
+        <h1 className="modal-h disp-7">
+          {text('Heading', 'Lorem Ipsum', MODAL)}
+        </h1>
         <p>
           {text(
             'Body',

@@ -31,7 +31,7 @@ exports[`Storyshots Badge Badge And Button 1`] = `
 
 exports[`Storyshots Badge Badge And Heading 1`] = `
 <h1
-  className="h4"
+  className="disp-7"
 >
   Lorem Ipsum
    
@@ -227,7 +227,7 @@ Array [
         className="modal-content"
       >
         <h1
-          className="modal-h h4"
+          className="modal-h disp-7"
         >
           Lorem Ipsum
         </h1>
@@ -261,7 +261,7 @@ exports[`Storyshots Modal Heading 1`] = `
       className="modal-content"
     >
       <h1
-        className="modal-h h4"
+        className="modal-h disp-7"
       >
         Lorem Ipsum
       </h1>
@@ -291,7 +291,7 @@ exports[`Storyshots Modal Heading And Text 1`] = `
       className="modal-content"
     >
       <h1
-        className="modal-h h4"
+        className="modal-h disp-7"
       >
         Lorem Ipsum
       </h1>
@@ -324,7 +324,7 @@ exports[`Storyshots Modal Heading And Text Fullscreen 1`] = `
       className="modal-content"
     >
       <h1
-        className="modal-h h4"
+        className="modal-h disp-7"
       >
         Lorem Ipsum
       </h1>
