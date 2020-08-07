@@ -1,6 +1,6 @@
 .btn {
-  --bg: var(--primary);
-  --color: var(--secondary);
+  --bg: var(--c-primary);
+  --color: var(--c-secondary);
   --pb: 0.5em;
   --pl: 1em;
   --pr: 1em;
@@ -18,8 +18,8 @@
 
   &.outline {
     --bg: unset;
-    --border: 0.2rem solid var(--primary);
-    --color: var(--primary);
+    --border: 0.2rem solid var(--c-primary);
+    --color: var(--c-primary);
 
     background: var(--bg);
     color: var(--color);

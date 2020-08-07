@@ -65,7 +65,7 @@ When loading Sass stylesheets within other Sass stylesheets, the `@use` rule is 
 
 CSS custom properties (also known as CSS variables or cascading variables) and Sass variables seemingly offer similar functionality, but when following eswiss guidelines they have different purposes.
 
-Sass variables should be used for unchanging values, similar to how `const` is used for primitive values in script code. CSS custom properties should be used for changing values, similar to how `let` is used in script code.
+The decision is determined by whether or not the value can be changed during runtime. Sass variables should be used for unchanging values, similar to how `const` is used for primitive values in script code. CSS custom properties should be used for changing values, similar to how `let` is used in script code.
 
 It should be noted that because Sass variables are preprocessed, they cannot be directly read or updated with script code. Importing Sass variables from external Sass files also creates a dependency for the build process. That is why in cases where you need to update a Sass variable value with script code, a CSS custom property should be used instead.
 
