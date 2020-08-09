@@ -41,12 +41,22 @@ $data: (
       auto: auto,
     ),
   ),
-  td: (
-    prop: text-decoration,
+  tdl: (
+    prop: text-decoration-line,
     vals: (
       line-through: line-through,
+      none: none,
       overline: overline,
       underline: underline,
+    ),
+  ),
+  tt: (
+    prop: text-transform,
+    vals: (
+      capitalize: capitalize,
+      uppercase: uppercase,
+      lowercase: lowercase,
+      none: none,
     ),
   ),
 );
