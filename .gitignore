@@ -24,4 +24,5 @@ yarn-error.log*
 
 storybook-static
 dist
+sass-build-test
 .env
