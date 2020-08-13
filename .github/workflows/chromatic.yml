@@ -21,6 +21,7 @@ jobs:
     # the list of steps that the action will go through
     steps:
       - uses: actions/checkout@v1
+      - run: yarn
       - run: yarn add react@^16.13.1
       - run: yarn add react-dom@^16.13.1
       - run: yarn add sass@^1.26.10
