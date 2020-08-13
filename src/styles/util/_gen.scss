@@ -1,6 +1,11 @@
 /* Utility Class Generation Mixins */
 @use 'sass:map';
 
+/**
+ * Mixin used to generate utility classes.
+ * @param {Map} util-data Utility class data map
+ * @param {string} prefix Prefix to prepend to all utility classes.
+ */
 @mixin gen-classes($util-data, $prefix: '') {
   @each $util-name, $util-map in $util-data {
     @each $util-val-name, $util-val-val in map.get($util-map, vals) {

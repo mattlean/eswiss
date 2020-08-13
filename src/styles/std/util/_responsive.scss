@@ -14,35 +14,35 @@
 
 $XXL-PREFIX: 'xxl';
 @media (max-width: map.get(bp.$bp, 'xxl')) {
-  @include gen.gen-classes(appearance.$data, '#{$XXL-PREFIX}\:');
-  @include gen.gen-classes(stdAppearance.$data, '#{$XXL-PREFIX}\:');
-  @include gen.gen-classes(layout.$data, '#{$XXL-PREFIX}\:');
+  @include gen.gen-classes(appearance.$data, '#{$XXL-PREFIX}\\\:');
+  @include gen.gen-classes(stdAppearance.$data, '#{$XXL-PREFIX}\\\:');
+  @include gen.gen-classes(layout.$data, '#{$XXL-PREFIX}\\\:');
 }
 
 $XL-PREFIX: 'xl';
 @media (max-width: map.get(bp.$bp, 'xl')) {
-  @include gen.gen-classes(appearance.$data, '#{$XL-PREFIX}\:');
-  @include gen.gen-classes(stdAppearance.$data, '#{$XL-PREFIX}\:');
-  @include gen.gen-classes(layout.$data, '#{$XL-PREFIX}\:');
+  @include gen.gen-classes(appearance.$data, '#{$XL-PREFIX}\\\:');
+  @include gen.gen-classes(stdAppearance.$data, '#{$XL-PREFIX}\\\:');
+  @include gen.gen-classes(layout.$data, '#{$XL-PREFIX}\\\:');
 }
 
 $LG-PREFIX: 'lg';
 @media (max-width: map.get(bp.$bp, 'lg')) {
-  @include gen.gen-classes(appearance.$data, '#{$LG-PREFIX}\:');
-  @include gen.gen-classes(stdAppearance.$data, '#{$LG-PREFIX}\:');
-  @include gen.gen-classes(layout.$data, '#{$LG-PREFIX}\:');
+  @include gen.gen-classes(appearance.$data, '#{$LG-PREFIX}\\\:');
+  @include gen.gen-classes(stdAppearance.$data, '#{$LG-PREFIX}\\\:');
+  @include gen.gen-classes(layout.$data, '#{$LG-PREFIX}\\\:');
 }
 
 $MD-PREFIX: 'md';
 @media (max-width: map.get(bp.$bp, 'md')) {
-  @include gen.gen-classes(appearance.$data, '#{$MD-PREFIX}\:');
-  @include gen.gen-classes(stdAppearance.$data, '#{$MD-PREFIX}\:');
-  @include gen.gen-classes(layout.$data, '#{$MD-PREFIX}\:');
+  @include gen.gen-classes(appearance.$data, '#{$MD-PREFIX}\\\:');
+  @include gen.gen-classes(stdAppearance.$data, '#{$MD-PREFIX}\\\:');
+  @include gen.gen-classes(layout.$data, '#{$MD-PREFIX}\\\:');
 }
 
 $SM-PREFIX: 'sm';
 @media (max-width: map.get(bp.$bp, 'sm')) {
-  @include gen.gen-classes(appearance.$data, '#{$SM-PREFIX}\:');
-  @include gen.gen-classes(stdAppearance.$data, '#{$SM-PREFIX}\:');
-  @include gen.gen-classes(layout.$data, '#{$SM-PREFIX}\:');
+  @include gen.gen-classes(appearance.$data, '#{$SM-PREFIX}\\\:');
+  @include gen.gen-classes(stdAppearance.$data, '#{$SM-PREFIX}\\\:');
+  @include gen.gen-classes(layout.$data, '#{$SM-PREFIX}\\\:');
 }
