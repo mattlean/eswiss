@@ -1,6 +1,6 @@
 {
   "name": "eswiss",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "private": false,
   "peerDependencies": {
     "react": "^16.13.1",
@@ -56,15 +56,15 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.3.19",
-    "@storybook/addon-docs": "^5.3.19",
-    "@storybook/addon-knobs": "^5.3.19",
-    "@storybook/addon-links": "^5.3.19",
-    "@storybook/addon-storyshots": "^5.3.19",
-    "@storybook/addon-storysource": "^5.3.19",
-    "@storybook/addons": "^5.3.19",
+    "@storybook/addon-actions": "^6.0.10",
+    "@storybook/addon-docs": "^6.0.10",
+    "@storybook/addon-knobs": "^6.0.10",
+    "@storybook/addon-links": "^6.0.10",
+    "@storybook/addon-storyshots": "^6.0.10",
+    "@storybook/addon-storysource": "^6.0.10",
+    "@storybook/addons": "^6.0.10",
     "@storybook/preset-create-react-app": "^3.1.4",
-    "@storybook/react": "^5.3.19",
+    "@storybook/react": "^6.0.10",
     "@storybook/storybook-deployer": "^2.8.6",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -82,7 +82,7 @@
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "3.4.3",
     "react-test-renderer": "^16.13.1",
     "sass": "^1.26.10",
     "storybook-chromatic": "^4.0.2",
@@ -90,7 +90,7 @@
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0",
-    "typescript": "~3.7.2"
+    "typescript": "~3.9.7"
   },
   "description": "A design system built upon Swiss design principles",
   "main": "dist/index.js",
