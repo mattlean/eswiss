@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { __IS_SERVER__ } from './typings'
 
 /**
  * Custom hook that runs a function when component mounts
@@ -19,7 +18,9 @@ export const useDidMount = (cb: () => void) => {
  * Custom hook that returns viewport height (including scrollbar) as state
  * @return {(number)} Viewport height
  */
-export const useViewportHeight = (): number | undefined => {
+export const useViewportHeight = (
+  __IS_SERVER__?: boolean
+): number | undefined => {
   const heightVal = __IS_SERVER__ ? undefined : window.innerHeight
   const [height, setHeight] = useState(heightVal)
   useEffect(() => {
@@ -34,7 +35,9 @@ export const useViewportHeight = (): number | undefined => {
  * Custom hook that returns viewport width (including scrollbar) as state
  * @return {(number)} Viewport width
  */
-export const useViewportWidth = (): number | undefined => {
+export const useViewportWidth = (
+  __IS_SERVER__?: boolean
+): number | undefined => {
   const widthVal = __IS_SERVER__ ? undefined : window.innerWidth
   const [width, setWidth] = useState(widthVal)
   useEffect(() => {
