@@ -244,7 +244,7 @@ const Modal = ({
   const viewportHeight = useViewportHeight()
   useEffect(() => {
     if (modalEle && modalEle.current) {
-      if (autoCenterH) {
+      if (autoCenterH && typeof viewportWidth === 'number') {
         if (modalEle.current.offsetWidth < viewportWidth) {
           modalEle.current.classList.add('modal-centerh')
         } else {
@@ -252,7 +252,7 @@ const Modal = ({
         }
       }
 
-      if (autoCenterV) {
+      if (autoCenterV && typeof viewportHeight === 'number') {
         if (modalEle.current.offsetHeight < viewportHeight) {
           modalEle.current.classList.add('modal-centerv')
         } else {
