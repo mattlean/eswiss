@@ -19,7 +19,9 @@ export interface Props {
   autoCenterV?: boolean
   children?: ReactNode
   className?: string
+  closeClassName?: string
   closeOnOverlayClick?: boolean
+  contentClassName?: string
   hideEleWithAria?: HTMLElement | string
   focusEleOnClose?: HTMLElement
   isFull?: boolean
@@ -48,7 +50,9 @@ export interface Props {
  * @prop {string} [ariaLabelledBy] aria-labelledby attribute value
  * @prop {ReactNode} [children] React component children
  * @prop {string} [className] Modal CSS class attribute value to append to default value. Overwritten by modalClassName prop.
+ * @prop {string} [closeClassName] Close button class attribute value to append to default value
  * @prop {boolean} [closeOnOverlayClick] Close modal if overlay is clicked if true
+ * @prop {string} [contentClassName] Content class attribute value to append to default value
  * @prop {HTMLElement} [focusEleOnClose] Element to be focused on after modal closes
  * @prop {HTMLElement | string} [hideEleWithAria] Element to apply aria-hidden attribute to while modal is open. HTMLElement or selector string is accepted.
  * @prop {boolean} [isFull] Enable fullscreen if true
@@ -75,7 +79,9 @@ const Modal = ({
   ariaLabelledBy,
   children,
   className,
+  closeClassName,
   closeOnOverlayClick,
+  contentClassName,
   focusEleOnClose,
   hideEleWithAria,
   isFull,
@@ -300,17 +306,25 @@ const Modal = ({
     s = style
   }
 
+  let closeClassNameVal = 'modal-close'
+  if (closeClassName) {
+    closeClassNameVal += ` ${closeClassName}`
+  }
+  let contentClassNameVal = 'modal-content'
+  if (contentClassName) {
+    contentClassNameVal += ` ${contentClassName}`
+  }
   const modalContent = (
     <section ref={modalEle} className={modalClassNames.join(' ')} style={s}>
       <button
         type="button"
         aria-label="Close Modal"
         onClick={closeModal}
-        className="modal-close"
+        className={closeClassNameVal}
       >
         X
       </button>
-      <section className="modal-content">{children}</section>
+      <section className={contentClassNameVal}>{children}</section>
     </section>
   )
 

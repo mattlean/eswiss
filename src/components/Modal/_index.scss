@@ -92,6 +92,7 @@ body.modal-open {
     --right: 2rem;
     --top: 1.8rem;
 
+    cursor: pointer;
     font-weight: var(--font-weight);
 
     bottom: var(--bottom);
@@ -99,7 +100,5 @@ body.modal-open {
     position: absolute;
     right: var(--right);
     top: var(--top);
-
-    animation: 1s ease-in;
   }
 }
