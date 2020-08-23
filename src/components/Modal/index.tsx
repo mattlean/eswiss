@@ -10,6 +10,7 @@ import React, {
 import { useViewportHeight, useViewportWidth } from '../../util'
 
 export interface Props {
+  __IS_SERVER__?: boolean
   allowBgScroll?: boolean
   ariaDescribedBy?: string
   ariaLabel?: string
@@ -38,6 +39,7 @@ export interface Props {
 
 /**
  * Modal
+ * @prop {boolean} [__IS_SERVER__] Flag to determine if Modal is being rendered in the server or not
  * @prop {boolean} [allowBgScroll] Allow background to scroll while modal is open if true
  * @prop {boolean} [autoCenterH] Automatically center modal horizontally when modal is smaller than viewport width
  * @prop {boolean} [autoCenterV] Automatically center modal vertically when modal is smaller than viewport height
@@ -56,7 +58,7 @@ export interface Props {
  * @prop {(event?: MouseEvent<HTMLButtonElement>) => void} [onClose] Function to run when close event is triggered
  * @prop {(...args: any[]) => void} [onOpen] Function to run when open event is triggered
  * @prop {string} [overlayClassName] Overlay CSS class attribute value to append to default value.
- * @prop {ReactNode} [overlayOverride] Component to override default modal overlay div
+ * @prop {ReactNode} [overlayOverride] Component to override default overlay div
  * @prop {boolean} [overrideClassName] Override default class attribute values if true
  * @prop {object} [overlayStyle] Overlay style attribute value
  * @prop {object} [style] Modal style attribute value. Overwritten by modalStyle prop.
@@ -64,6 +66,7 @@ export interface Props {
  * @prop {boolean} [useAriaModal] Use aria-modal attribute on modal when it is open. Defaults to true if useAriaHidden is not set.
  */
 const Modal = ({
+  __IS_SERVER__,
   allowBgScroll,
   autoCenterH,
   autoCenterV,
@@ -245,8 +248,8 @@ const Modal = ({
   }, [closeOnOverlayClick]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Auto-center modal if conditions are met
-  const viewportWidth = useViewportWidth()
-  const viewportHeight = useViewportHeight()
+  const viewportWidth = useViewportWidth(__IS_SERVER__)
+  const viewportHeight = useViewportHeight(__IS_SERVER__)
   useEffect(() => {
     if (modalEle && modalEle.current) {
       if (autoCenterH && typeof viewportWidth === 'number') {
