@@ -283,12 +283,14 @@ const Modal = ({
   // Apply CSS class names
   let modalClassNames = []
   let overlayClassNames = []
+
   if (!overrideClassName) {
     modalClassNames.push('modal')
     overlayClassNames.push('modal-overlay')
     if (isOpen) overlayClassNames.push(MODAL_OPEN_CLASS)
-    if (isFull) modalClassNames.push('modal-full')
   }
+
+  if (isFull) modalClassNames.push('modal-full')
 
   if (modalClassName) {
     modalClassNames.push(modalClassName)
@@ -298,14 +300,6 @@ const Modal = ({
 
   if (overlayClassName) overlayClassNames.push(overlayClassName)
 
-  // Apply style
-  let s
-  if (modalStyle) {
-    s = modalStyle
-  } else if (style) {
-    s = style
-  }
-
   let closeClassNameVal = 'modal-close'
   if (closeClassName) {
     closeClassNameVal += ` ${closeClassName}`
@@ -314,6 +308,16 @@ const Modal = ({
   if (contentClassName) {
     contentClassNameVal += ` ${contentClassName}`
   }
+
+  // Apply style
+  let s
+  if (modalStyle) {
+    s = modalStyle
+  } else if (style) {
+    s = style
+  }
+
+  // Create modal JSX
   const modalContent = (
     <section ref={modalEle} className={modalClassNames.join(' ')} style={s}>
       <button
