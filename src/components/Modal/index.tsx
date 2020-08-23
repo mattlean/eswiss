@@ -7,7 +7,21 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { useViewportHeight, useViewportWidth } from '../../util'
+import {
+  DISABLE_BG_SCROLL_CLASS,
+  setBodyScroll,
+  useViewportHeight,
+  useViewportWidth,
+} from '../../util'
+
+// CSS class that controls if modal is open
+const MODAL_OPEN_CLASS = 'modal-open'
+// CSS class that controls if modal is full
+const MODAL_FULL_CLASS = 'modal-full'
+// CSS class that controls if modal is centered horizontally
+const MODAL_CENTERH_CLASS = 'modal-centerh'
+// CSS class that controls if modal is centered vertically
+const MODAL_CENTERV_CLASS = 'modal-centerv'
 
 export interface Props {
   __IS_SERVER__?: boolean
@@ -98,31 +112,17 @@ const Modal = ({
   useAriaHidden,
   useAriaModal,
 }: Props) => {
-  const MODAL_OPEN_CLASS = 'modal-open' // CSS class that controls if modal is open visually
-
   // Use aria-modal in default conditions
   if (useAriaModal === undefined && useAriaHidden === undefined) {
     useAriaModal = true
   }
 
-  /**
-   * Control existance of modal-open CSS class on body element
-   * @param {boolean} open modal-open CSS class exists on body element if true
-   */
-  const setBodyModalState = (open: boolean) => {
-    if (open) {
-      document.body.classList.add(MODAL_OPEN_CLASS)
-    } else {
-      document.body.classList.remove(MODAL_OPEN_CLASS)
-    }
-  }
-
   const [tabNavStart, setTabNavStart] = useState<HTMLElement>()
 
-  // Apply modal-open CSS class to body element if isOpen
   useEffect(() => {
     if (isOpen) {
-      if (!allowBgScroll) setBodyModalState(true)
+      // Disable background scrolling while modal is open
+      if (!allowBgScroll) setBodyScroll(false)
 
       // Hide background content from a11y API
       if (hideEleWithAria) {
@@ -142,19 +142,19 @@ const Modal = ({
     }
 
     // Remove modal-open CSS class on body on unmount
-    return () => document.body.classList.remove(MODAL_OPEN_CLASS)
+    return () => document.body.classList.remove(DISABLE_BG_SCROLL_CLASS)
   }, [allowBgScroll, hideEleWithAria, isOpen, onOpen, tabNavStart])
 
   // Remove modal-open CSS class from body element if allowBgScroll is changed to false
   useEffect(() => {
-    if (!allowBgScroll) document.body.classList.remove(MODAL_OPEN_CLASS)
+    if (!allowBgScroll) document.body.classList.remove(DISABLE_BG_SCROLL_CLASS)
   }, [allowBgScroll])
 
   /**
    * Function called when onClose event is triggered
    */
   const closeModal = () => {
-    setBodyModalState(false)
+    setBodyScroll(true)
 
     // Expose background content for a11y API
     if (hideEleWithAria) {
@@ -260,17 +260,17 @@ const Modal = ({
     if (modalEle && modalEle.current) {
       if (autoCenterH && typeof viewportWidth === 'number') {
         if (modalEle.current.offsetWidth < viewportWidth) {
-          modalEle.current.classList.add('modal-centerh')
+          modalEle.current.classList.add(MODAL_CENTERH_CLASS)
         } else {
-          modalEle.current.classList.remove('modal-centerh')
+          modalEle.current.classList.remove(MODAL_CENTERH_CLASS)
         }
       }
 
       if (autoCenterV && typeof viewportHeight === 'number') {
         if (modalEle.current.offsetHeight < viewportHeight) {
-          modalEle.current.classList.add('modal-centerv')
+          modalEle.current.classList.add(MODAL_CENTERV_CLASS)
         } else {
-          modalEle.current.classList.remove('modal-centerv')
+          modalEle.current.classList.remove(MODAL_CENTERV_CLASS)
         }
       }
     }
@@ -290,7 +290,7 @@ const Modal = ({
     if (isOpen) overlayClassNames.push(MODAL_OPEN_CLASS)
   }
 
-  if (isFull) modalClassNames.push('modal-full')
+  if (isFull) modalClassNames.push(MODAL_FULL_CLASS)
 
   if (modalClassName) {
     modalClassNames.push(modalClassName)
