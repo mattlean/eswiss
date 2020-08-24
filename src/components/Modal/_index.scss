@@ -67,6 +67,7 @@ body.disable-bg-scroll {
     --upper-txt-spacing: 2rem;
 
     .modal-h {
+      display: inline-block;
       margin-bottom: var(--upper-txt-spacing);
 
       &:last-child {
