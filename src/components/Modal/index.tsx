@@ -174,12 +174,12 @@ const Modal = ({
     if (focusEleOnClose) focusEleOnClose.focus()
   }
 
-  const modalEle = useRef<HTMLElement>(null)
+  const overlayEle = useRef<HTMLDivElement>(null)
   const [tabNavEnd, setTabNavEnd] = useState<HTMLElement>()
 
   // Setup keyboard tab trap, tabNavStart & tabNavEnd
   useEffect(() => {
-    if (modalEle && modalEle.current) {
+    if (overlayEle && overlayEle.current) {
       /**
        * Setup keyboard tab trap
        * @param {KeyboardEvent} e Keyboard event object
@@ -206,25 +206,22 @@ const Modal = ({
         }
       }
 
-      const currModalEle = modalEle.current
-      const tabNav = currModalEle.querySelectorAll(
+      const currOverlayEle = overlayEle.current
+      const tabNav = currOverlayEle.querySelectorAll(
         '[contenteditable], [tabindex="0"], a[href], area[href], button:not([disabled]), embed, iframe, input:not([disabled]), object, select:not([disabled]), textarea:not([disabled])'
       )
 
       // Set tabNavStart & tabNavEnd
       if (tabNav.length > 0) {
-        const tabNavStart = tabNav[0] as HTMLElement
-        setTabNavStart(tabNavStart)
+        setTabNavStart(tabNav[0] as HTMLElement)
         setTabNavEnd(tabNav[tabNav.length - 1] as HTMLElement)
       }
 
       // Apply keyboard tab trap on modal
-      currModalEle.addEventListener('keydown', trapTab)
-      return () => currModalEle.removeEventListener('keydown', trapTab)
+      currOverlayEle.addEventListener('keydown', trapTab)
+      return () => currOverlayEle.removeEventListener('keydown', trapTab)
     }
   }, [tabNavStart, tabNavEnd]) // eslint-disable-line react-hooks/exhaustive-deps
-
-  const overlayEle = useRef<HTMLDivElement>(null)
 
   // Handle overlay click event listener
   useEffect(() => {
@@ -254,6 +251,7 @@ const Modal = ({
   }, [closeOnOverlayClick]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Auto-center modal if conditions are met
+  const modalEle = useRef<HTMLElement>(null)
   const viewportWidth = useViewportWidth(__IS_SERVER__)
   const viewportHeight = useViewportHeight(__IS_SERVER__)
   useEffect(() => {
