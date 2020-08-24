@@ -36,6 +36,7 @@ export interface Props {
   closeClassName?: string
   closeOnOverlayClick?: boolean
   contentClassName?: string
+  disableTabTrap?: boolean
   hideEleWithAria?: HTMLElement | string
   focusEleOnClose?: HTMLElement
   isFull?: boolean
@@ -67,6 +68,7 @@ export interface Props {
  * @prop {string} [closeClassName] Close button class attribute value to append to default value
  * @prop {boolean} [closeOnOverlayClick] Close modal if overlay is clicked if true
  * @prop {string} [contentClassName] Content class attribute value to append to default value
+ * @prop {boolean} [disableTabTrap] Disable tab trap if true
  * @prop {HTMLElement} [focusEleOnClose] Element to be focused on after modal closes
  * @prop {HTMLElement | string} [hideEleWithAria] Element to apply aria-hidden attribute to while modal is open. HTMLElement or selector string is accepted.
  * @prop {boolean} [isFull] Enable fullscreen if true
@@ -74,7 +76,7 @@ export interface Props {
  * @prop {string} [modalClassName] Modal CSS class attribute value to append to default value. Overrides className prop.
  * @prop {object} [modalStyle] Modal style attribute value. Overrides style prop.
  * @prop {(event?: MouseEvent<HTMLButtonElement>) => void} [onClose] Function to run when close event is triggered
- * @prop {(...args: any[]) => void} [onOpen] Function to run when open event is triggered
+ * @prop {(...args: any[]) => void} [onOpen=() => void] Function to run when open event is triggered. By default the function will focus on first focusable element. Setting this to "null" will leave this function as undefined.
  * @prop {string} [overlayClassName] Overlay CSS class attribute value to append to default value.
  * @prop {ReactNode} [overlayOverride] Component to override default overlay div
  * @prop {boolean} [overrideClassName] Override default class attribute values if true
@@ -96,6 +98,7 @@ const Modal = ({
   closeClassName,
   closeOnOverlayClick,
   contentClassName,
+  disableTabTrap,
   focusEleOnClose,
   hideEleWithAria,
   isFull,
@@ -119,6 +122,15 @@ const Modal = ({
 
   const [tabNavStart, setTabNavStart] = useState<HTMLElement>()
 
+  // Set default onOpen function if it is not defined or null
+  if (!onOpen && onOpen !== null) {
+    onOpen = () => {
+      // Begin focus on first focusable element in modal
+      if (tabNavStart) tabNavStart.focus()
+    }
+  }
+
+  // Effects run when modal is open
   useEffect(() => {
     if (isOpen) {
       // Disable background scrolling while modal is open
@@ -136,18 +148,15 @@ const Modal = ({
 
       // Call onOpen function is available.
       if (onOpen) onOpen()
-
-      // Begin focus on first focusable element in modal
-      if (tabNavStart) tabNavStart.focus()
     }
 
-    // Remove modal-open CSS class on body on unmount
+    // Enable body scrolling on unmount
     return () => document.body.classList.remove(DISABLE_BG_SCROLL_CLASS)
   }, [allowBgScroll, hideEleWithAria, isOpen, onOpen, tabNavStart])
 
-  // Remove modal-open CSS class from body element if allowBgScroll is changed to false
+  // Enable body scrolling if allowBgScroll is changed to false
   useEffect(() => {
-    if (!allowBgScroll) document.body.classList.remove(DISABLE_BG_SCROLL_CLASS)
+    if (allowBgScroll) document.body.classList.remove(DISABLE_BG_SCROLL_CLASS)
   }, [allowBgScroll])
 
   /**
@@ -217,11 +226,16 @@ const Modal = ({
         setTabNavEnd(tabNav[tabNav.length - 1] as HTMLElement)
       }
 
-      // Apply keyboard tab trap on modal
-      currOverlayEle.addEventListener('keydown', trapTab)
+      if (disableTabTrap) {
+        // Remove keyboard trap if disableTabTrap was changed
+        currOverlayEle.removeEventListener('keydown', trapTab)
+      } else {
+        // Apply keyboard tab trap on modal
+        currOverlayEle.addEventListener('keydown', trapTab)
+      }
       return () => currOverlayEle.removeEventListener('keydown', trapTab)
     }
-  }, [tabNavStart, tabNavEnd]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [disableTabTrap, tabNavStart, tabNavEnd]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Handle overlay click event listener
   useEffect(() => {
@@ -318,6 +332,7 @@ const Modal = ({
   // Create modal JSX
   const modalContent = (
     <section ref={modalEle} className={modalClassNames.join(' ')} style={s}>
+      <section className={contentClassNameVal}>{children}</section>
       <button
         type="button"
         aria-label="Close Modal"
@@ -326,7 +341,6 @@ const Modal = ({
       >
         X
       </button>
-      <section className={contentClassNameVal}>{children}</section>
     </section>
   )
 
