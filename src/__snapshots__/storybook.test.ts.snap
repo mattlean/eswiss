@@ -122,6 +122,13 @@ exports[`Storyshots Modal Body Fullscreen 1`] = `
   <section
     className="modal modal-full"
   >
+    <section
+      className="modal-content"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue enim ac nibh dictum, eu hendrerit enim malesuada. Vivamus et magna dignissim ipsum viverra pretium quis interdum dui. Proin eget rhoncus arcu, ut feugiat est. Integer eget nulla sed orci gravida aliquet. Sed a luctus metus, ac porta ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non vestibulum quam. Vivamus porta vulputate ultrices. Ut et congue purus. Sed id tortor et sem cursus aliquet sed eget nibh. Sed scelerisque quam eleifend dolor pellentesque, eget ultricies justo aliquam. Praesent eu tortor sed diam dignissim accumsan. Cras sit amet ex mi.
+      </p>
+    </section>
     <button
       aria-label="Close Modal"
       className="modal-close"
@@ -130,13 +137,6 @@ exports[`Storyshots Modal Body Fullscreen 1`] = `
     >
       X
     </button>
-    <section
-      className="modal-content"
-    >
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue enim ac nibh dictum, eu hendrerit enim malesuada. Vivamus et magna dignissim ipsum viverra pretium quis interdum dui. Proin eget rhoncus arcu, ut feugiat est. Integer eget nulla sed orci gravida aliquet. Sed a luctus metus, ac porta ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non vestibulum quam. Vivamus porta vulputate ultrices. Ut et congue purus. Sed id tortor et sem cursus aliquet sed eget nibh. Sed scelerisque quam eleifend dolor pellentesque, eget ultricies justo aliquam. Praesent eu tortor sed diam dignissim accumsan. Cras sit amet ex mi.
-      </p>
-    </section>
   </section>
 </div>
 `;
@@ -150,6 +150,13 @@ exports[`Storyshots Modal Body Text 1`] = `
   <section
     className="modal"
   >
+    <section
+      className="modal-content"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue enim ac nibh dictum, eu hendrerit enim malesuada. Vivamus et magna dignissim ipsum viverra pretium quis interdum dui. Proin eget rhoncus arcu, ut feugiat est. Integer eget nulla sed orci gravida aliquet. Sed a luctus metus, ac porta ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non vestibulum quam. Vivamus porta vulputate ultrices. Ut et congue purus. Sed id tortor et sem cursus aliquet sed eget nibh. Sed scelerisque quam eleifend dolor pellentesque, eget ultricies justo aliquam. Praesent eu tortor sed diam dignissim accumsan. Cras sit amet ex mi.
+      </p>
+    </section>
     <button
       aria-label="Close Modal"
       className="modal-close"
@@ -158,13 +165,6 @@ exports[`Storyshots Modal Body Text 1`] = `
     >
       X
     </button>
-    <section
-      className="modal-content"
-    >
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue enim ac nibh dictum, eu hendrerit enim malesuada. Vivamus et magna dignissim ipsum viverra pretium quis interdum dui. Proin eget rhoncus arcu, ut feugiat est. Integer eget nulla sed orci gravida aliquet. Sed a luctus metus, ac porta ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non vestibulum quam. Vivamus porta vulputate ultrices. Ut et congue purus. Sed id tortor et sem cursus aliquet sed eget nibh. Sed scelerisque quam eleifend dolor pellentesque, eget ultricies justo aliquam. Praesent eu tortor sed diam dignissim accumsan. Cras sit amet ex mi.
-      </p>
-    </section>
   </section>
 </div>
 `;
@@ -215,14 +215,6 @@ Array [
         }
       }
     >
-      <button
-        aria-label="Close Modal"
-        className="modal-close"
-        onClick={[Function]}
-        type="button"
-      >
-        X
-      </button>
       <section
         className="modal-content"
       >
@@ -235,6 +227,14 @@ Array [
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue enim ac nibh dictum, eu hendrerit enim malesuada. Vivamus et magna dignissim ipsum viverra pretium quis interdum dui. Proin eget rhoncus arcu, ut feugiat est. Integer eget nulla sed orci gravida aliquet. Sed a luctus metus, ac porta ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non vestibulum quam. Vivamus porta vulputate ultrices. Ut et congue purus. Sed id tortor et sem cursus aliquet sed eget nibh. Sed scelerisque quam eleifend dolor pellentesque, eget ultricies justo aliquam. Praesent eu tortor sed diam dignissim accumsan. Cras sit amet ex mi.
         </p>
       </section>
+      <button
+        aria-label="Close Modal"
+        className="modal-close"
+        onClick={[Function]}
+        type="button"
+      >
+        X
+      </button>
     </section>
   </div>,
 ]
@@ -249,14 +249,6 @@ exports[`Storyshots Modal Heading 1`] = `
   <section
     className="modal"
   >
-    <button
-      aria-label="Close Modal"
-      className="modal-close"
-      onClick={[Function]}
-      type="button"
-    >
-      X
-    </button>
     <section
       className="modal-content"
     >
@@ -266,6 +258,14 @@ exports[`Storyshots Modal Heading 1`] = `
         Lorem Ipsum
       </h1>
     </section>
+    <button
+      aria-label="Close Modal"
+      className="modal-close"
+      onClick={[Function]}
+      type="button"
+    >
+      X
+    </button>
   </section>
 </div>
 `;
@@ -279,14 +279,6 @@ exports[`Storyshots Modal Heading And Text 1`] = `
   <section
     className="modal"
   >
-    <button
-      aria-label="Close Modal"
-      className="modal-close"
-      onClick={[Function]}
-      type="button"
-    >
-      X
-    </button>
     <section
       className="modal-content"
     >
@@ -299,6 +291,14 @@ exports[`Storyshots Modal Heading And Text 1`] = `
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue enim ac nibh dictum, eu hendrerit enim malesuada. Vivamus et magna dignissim ipsum viverra pretium quis interdum dui. Proin eget rhoncus arcu, ut feugiat est. Integer eget nulla sed orci gravida aliquet. Sed a luctus metus, ac porta ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non vestibulum quam. Vivamus porta vulputate ultrices. Ut et congue purus. Sed id tortor et sem cursus aliquet sed eget nibh. Sed scelerisque quam eleifend dolor pellentesque, eget ultricies justo aliquam. Praesent eu tortor sed diam dignissim accumsan. Cras sit amet ex mi.
       </p>
     </section>
+    <button
+      aria-label="Close Modal"
+      className="modal-close"
+      onClick={[Function]}
+      type="button"
+    >
+      X
+    </button>
   </section>
 </div>
 `;
@@ -312,14 +312,6 @@ exports[`Storyshots Modal Heading And Text Fullscreen 1`] = `
   <section
     className="modal modal-full"
   >
-    <button
-      aria-label="Close Modal"
-      className="modal-close"
-      onClick={[Function]}
-      type="button"
-    >
-      X
-    </button>
     <section
       className="modal-content"
     >
@@ -332,6 +324,14 @@ exports[`Storyshots Modal Heading And Text Fullscreen 1`] = `
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue enim ac nibh dictum, eu hendrerit enim malesuada. Vivamus et magna dignissim ipsum viverra pretium quis interdum dui. Proin eget rhoncus arcu, ut feugiat est. Integer eget nulla sed orci gravida aliquet. Sed a luctus metus, ac porta ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non vestibulum quam. Vivamus porta vulputate ultrices. Ut et congue purus. Sed id tortor et sem cursus aliquet sed eget nibh. Sed scelerisque quam eleifend dolor pellentesque, eget ultricies justo aliquam. Praesent eu tortor sed diam dignissim accumsan. Cras sit amet ex mi.
       </p>
     </section>
+    <button
+      aria-label="Close Modal"
+      className="modal-close"
+      onClick={[Function]}
+      type="button"
+    >
+      X
+    </button>
   </section>
 </div>
 `;
@@ -350,6 +350,13 @@ exports[`Storyshots Modal Modal With Width 1`] = `
       }
     }
   >
+    <section
+      className="modal-content"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue enim ac nibh dictum, eu hendrerit enim malesuada. Vivamus et magna dignissim ipsum viverra pretium quis interdum dui. Proin eget rhoncus arcu, ut feugiat est. Integer eget nulla sed orci gravida aliquet. Sed a luctus metus, ac porta ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non vestibulum quam. Vivamus porta vulputate ultrices. Ut et congue purus. Sed id tortor et sem cursus aliquet sed eget nibh. Sed scelerisque quam eleifend dolor pellentesque, eget ultricies justo aliquam. Praesent eu tortor sed diam dignissim accumsan. Cras sit amet ex mi.
+      </p>
+    </section>
     <button
       aria-label="Close Modal"
       className="modal-close"
@@ -358,13 +365,6 @@ exports[`Storyshots Modal Modal With Width 1`] = `
     >
       X
     </button>
-    <section
-      className="modal-content"
-    >
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue enim ac nibh dictum, eu hendrerit enim malesuada. Vivamus et magna dignissim ipsum viverra pretium quis interdum dui. Proin eget rhoncus arcu, ut feugiat est. Integer eget nulla sed orci gravida aliquet. Sed a luctus metus, ac porta ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non vestibulum quam. Vivamus porta vulputate ultrices. Ut et congue purus. Sed id tortor et sem cursus aliquet sed eget nibh. Sed scelerisque quam eleifend dolor pellentesque, eget ultricies justo aliquam. Praesent eu tortor sed diam dignissim accumsan. Cras sit amet ex mi.
-      </p>
-    </section>
   </section>
 </div>
 `;

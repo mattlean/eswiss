@@ -1,5 +1,19 @@
 import { useEffect, useState } from 'react'
 
+export const DISABLE_BG_SCROLL_CLASS = 'disable-bg-scroll'
+
+/**
+ * Control if scrolling is enabled in background when modal is opened
+ * @param {boolean} allowScrolling Allow scrolling if true, false otherwise
+ */
+export const setBodyScroll = (allowScrolling: boolean) => {
+  if (allowScrolling) {
+    document.body.classList.remove(DISABLE_BG_SCROLL_CLASS)
+  } else {
+    document.body.classList.add(DISABLE_BG_SCROLL_CLASS)
+  }
+}
+
 /**
  * Custom hook that runs a function when component mounts
  * @param {() => void} cb Callback function to run on component mount

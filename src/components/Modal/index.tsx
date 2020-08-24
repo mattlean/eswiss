@@ -7,7 +7,21 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { useViewportHeight, useViewportWidth } from '../../util'
+import {
+  DISABLE_BG_SCROLL_CLASS,
+  setBodyScroll,
+  useViewportHeight,
+  useViewportWidth,
+} from '../../util'
+
+// CSS class that controls if modal is open
+const MODAL_OPEN_CLASS = 'modal-open'
+// CSS class that controls if modal is full
+const MODAL_FULL_CLASS = 'modal-full'
+// CSS class that controls if modal is centered horizontally
+const MODAL_CENTERH_CLASS = 'modal-centerh'
+// CSS class that controls if modal is centered vertically
+const MODAL_CENTERV_CLASS = 'modal-centerv'
 
 export interface Props {
   __IS_SERVER__?: boolean
@@ -22,6 +36,7 @@ export interface Props {
   closeClassName?: string
   closeOnOverlayClick?: boolean
   contentClassName?: string
+  disableTabTrap?: boolean
   hideEleWithAria?: HTMLElement | string
   focusEleOnClose?: HTMLElement
   isFull?: boolean
@@ -53,6 +68,7 @@ export interface Props {
  * @prop {string} [closeClassName] Close button class attribute value to append to default value
  * @prop {boolean} [closeOnOverlayClick] Close modal if overlay is clicked if true
  * @prop {string} [contentClassName] Content class attribute value to append to default value
+ * @prop {boolean} [disableTabTrap] Disable tab trap if true
  * @prop {HTMLElement} [focusEleOnClose] Element to be focused on after modal closes
  * @prop {HTMLElement | string} [hideEleWithAria] Element to apply aria-hidden attribute to while modal is open. HTMLElement or selector string is accepted.
  * @prop {boolean} [isFull] Enable fullscreen if true
@@ -60,7 +76,7 @@ export interface Props {
  * @prop {string} [modalClassName] Modal CSS class attribute value to append to default value. Overrides className prop.
  * @prop {object} [modalStyle] Modal style attribute value. Overrides style prop.
  * @prop {(event?: MouseEvent<HTMLButtonElement>) => void} [onClose] Function to run when close event is triggered
- * @prop {(...args: any[]) => void} [onOpen] Function to run when open event is triggered
+ * @prop {(...args: any[]) => void} [onOpen=() => void] Function to run when open event is triggered. By default the function will focus on first focusable element. Setting this to "null" will leave this function as undefined.
  * @prop {string} [overlayClassName] Overlay CSS class attribute value to append to default value.
  * @prop {ReactNode} [overlayOverride] Component to override default overlay div
  * @prop {boolean} [overrideClassName] Override default class attribute values if true
@@ -82,6 +98,7 @@ const Modal = ({
   closeClassName,
   closeOnOverlayClick,
   contentClassName,
+  disableTabTrap,
   focusEleOnClose,
   hideEleWithAria,
   isFull,
@@ -98,31 +115,26 @@ const Modal = ({
   useAriaHidden,
   useAriaModal,
 }: Props) => {
-  const MODAL_OPEN_CLASS = 'modal-open' // CSS class that controls if modal is open visually
-
   // Use aria-modal in default conditions
   if (useAriaModal === undefined && useAriaHidden === undefined) {
     useAriaModal = true
   }
 
-  /**
-   * Control existance of modal-open CSS class on body element
-   * @param {boolean} open modal-open CSS class exists on body element if true
-   */
-  const setBodyModalState = (open: boolean) => {
-    if (open) {
-      document.body.classList.add(MODAL_OPEN_CLASS)
-    } else {
-      document.body.classList.remove(MODAL_OPEN_CLASS)
+  const [tabNavStart, setTabNavStart] = useState<HTMLElement>()
+
+  // Set default onOpen function if it is not defined or null
+  if (!onOpen && onOpen !== null) {
+    onOpen = () => {
+      // Begin focus on first focusable element in modal
+      if (tabNavStart) tabNavStart.focus()
     }
   }
 
-  const [tabNavStart, setTabNavStart] = useState<HTMLElement>()
-
-  // Apply modal-open CSS class to body element if isOpen
+  // Effects run when modal is open
   useEffect(() => {
     if (isOpen) {
-      if (!allowBgScroll) setBodyModalState(true)
+      // Disable background scrolling while modal is open
+      if (!allowBgScroll) setBodyScroll(false)
 
       // Hide background content from a11y API
       if (hideEleWithAria) {
@@ -136,25 +148,22 @@ const Modal = ({
 
       // Call onOpen function is available.
       if (onOpen) onOpen()
-
-      // Begin focus on first focusable element in modal
-      if (tabNavStart) tabNavStart.focus()
     }
 
-    // Remove modal-open CSS class on body on unmount
-    return () => document.body.classList.remove(MODAL_OPEN_CLASS)
+    // Enable body scrolling on unmount
+    return () => document.body.classList.remove(DISABLE_BG_SCROLL_CLASS)
   }, [allowBgScroll, hideEleWithAria, isOpen, onOpen, tabNavStart])
 
-  // Remove modal-open CSS class from body element if allowBgScroll is changed to false
+  // Enable body scrolling if allowBgScroll is changed to false
   useEffect(() => {
-    if (!allowBgScroll) document.body.classList.remove(MODAL_OPEN_CLASS)
+    if (allowBgScroll) document.body.classList.remove(DISABLE_BG_SCROLL_CLASS)
   }, [allowBgScroll])
 
   /**
    * Function called when onClose event is triggered
    */
   const closeModal = () => {
-    setBodyModalState(false)
+    setBodyScroll(true)
 
     // Expose background content for a11y API
     if (hideEleWithAria) {
@@ -174,12 +183,12 @@ const Modal = ({
     if (focusEleOnClose) focusEleOnClose.focus()
   }
 
-  const modalEle = useRef<HTMLElement>(null)
+  const overlayEle = useRef<HTMLDivElement>(null)
   const [tabNavEnd, setTabNavEnd] = useState<HTMLElement>()
 
   // Setup keyboard tab trap, tabNavStart & tabNavEnd
   useEffect(() => {
-    if (modalEle && modalEle.current) {
+    if (overlayEle && overlayEle.current) {
       /**
        * Setup keyboard tab trap
        * @param {KeyboardEvent} e Keyboard event object
@@ -206,25 +215,27 @@ const Modal = ({
         }
       }
 
-      const currModalEle = modalEle.current
-      const tabNav = currModalEle.querySelectorAll(
+      const currOverlayEle = overlayEle.current
+      const tabNav = currOverlayEle.querySelectorAll(
         '[contenteditable], [tabindex="0"], a[href], area[href], button:not([disabled]), embed, iframe, input:not([disabled]), object, select:not([disabled]), textarea:not([disabled])'
       )
 
       // Set tabNavStart & tabNavEnd
       if (tabNav.length > 0) {
-        const tabNavStart = tabNav[0] as HTMLElement
-        setTabNavStart(tabNavStart)
+        setTabNavStart(tabNav[0] as HTMLElement)
         setTabNavEnd(tabNav[tabNav.length - 1] as HTMLElement)
       }
 
-      // Apply keyboard tab trap on modal
-      currModalEle.addEventListener('keydown', trapTab)
-      return () => currModalEle.removeEventListener('keydown', trapTab)
+      if (disableTabTrap) {
+        // Remove keyboard trap if disableTabTrap was changed
+        currOverlayEle.removeEventListener('keydown', trapTab)
+      } else {
+        // Apply keyboard tab trap on modal
+        currOverlayEle.addEventListener('keydown', trapTab)
+      }
+      return () => currOverlayEle.removeEventListener('keydown', trapTab)
     }
-  }, [tabNavStart, tabNavEnd]) // eslint-disable-line react-hooks/exhaustive-deps
-
-  const overlayEle = useRef<HTMLDivElement>(null)
+  }, [disableTabTrap, tabNavStart, tabNavEnd]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Handle overlay click event listener
   useEffect(() => {
@@ -254,23 +265,24 @@ const Modal = ({
   }, [closeOnOverlayClick]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Auto-center modal if conditions are met
+  const modalEle = useRef<HTMLElement>(null)
   const viewportWidth = useViewportWidth(__IS_SERVER__)
   const viewportHeight = useViewportHeight(__IS_SERVER__)
   useEffect(() => {
     if (modalEle && modalEle.current) {
       if (autoCenterH && typeof viewportWidth === 'number') {
         if (modalEle.current.offsetWidth < viewportWidth) {
-          modalEle.current.classList.add('modal-centerh')
+          modalEle.current.classList.add(MODAL_CENTERH_CLASS)
         } else {
-          modalEle.current.classList.remove('modal-centerh')
+          modalEle.current.classList.remove(MODAL_CENTERH_CLASS)
         }
       }
 
       if (autoCenterV && typeof viewportHeight === 'number') {
         if (modalEle.current.offsetHeight < viewportHeight) {
-          modalEle.current.classList.add('modal-centerv')
+          modalEle.current.classList.add(MODAL_CENTERV_CLASS)
         } else {
-          modalEle.current.classList.remove('modal-centerv')
+          modalEle.current.classList.remove(MODAL_CENTERV_CLASS)
         }
       }
     }
@@ -290,7 +302,7 @@ const Modal = ({
     if (isOpen) overlayClassNames.push(MODAL_OPEN_CLASS)
   }
 
-  if (isFull) modalClassNames.push('modal-full')
+  if (isFull) modalClassNames.push(MODAL_FULL_CLASS)
 
   if (modalClassName) {
     modalClassNames.push(modalClassName)
@@ -320,6 +332,7 @@ const Modal = ({
   // Create modal JSX
   const modalContent = (
     <section ref={modalEle} className={modalClassNames.join(' ')} style={s}>
+      <section className={contentClassNameVal}>{children}</section>
       <button
         type="button"
         aria-label="Close Modal"
@@ -328,7 +341,6 @@ const Modal = ({
       >
         X
       </button>
-      <section className={contentClassNameVal}>{children}</section>
     </section>
   )
 
