@@ -1,9 +1,9 @@
 import React, { MouseEvent, ReactNode } from 'react'
 
 export interface Props {
-  ariaDescribedBy?: string
-  ariaLabel?: string
-  ariaLabelledBy?: string
+  'aria-describedby'?: string
+  'aria-label'?: string
+  'aria-labelledby'?: string
   children?: ReactNode
   className?: string
   fill?: boolean
@@ -16,9 +16,9 @@ export interface Props {
 
 /**
  * Badge
- * @prop {string} [ariaDescribedBy] aria-describedby attribute value
- * @prop {string} [ariaLabel] aria-label attribute value
- * @prop {string} [ariaLabelledBy] aria-labelledby attribute value
+ * @prop {string} [aria-describedby] aria-describedby attribute value
+ * @prop {string} [aria-label] aria-label attribute value
+ * @prop {string} [aria-labelledby] aria-labelledby attribute value
  * @prop {children} [children] Children
  * @prop {string} [className] CSS class attribute value to append to default value
  * @prop {boolean} [fill] Uses fill style if true
@@ -29,9 +29,9 @@ export interface Props {
  * @prop {boolean} [wide] Uses wide style if true
  */
 const Badge = ({
-  ariaDescribedBy,
-  ariaLabel,
-  ariaLabelledBy,
+  'aria-describedby': ariaDescribedBy,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   children,
   className,
   fill,

@@ -26,9 +26,9 @@ const MODAL_CENTERV_CLASS = 'modal-centerv'
 export interface Props {
   __IS_SERVER__?: boolean
   allowBgScroll?: boolean
-  ariaDescribedBy?: string
-  ariaLabel?: string
-  ariaLabelledBy?: string
+  'aria-describedby'?: string
+  'aria-label'?: string
+  'aria-labelledby'?: string
   autoCenterH?: boolean
   autoCenterV?: boolean
   children?: ReactNode
@@ -60,9 +60,9 @@ export interface Props {
  * @prop {boolean} [allowBgScroll] Allow background to scroll while modal is open if true
  * @prop {boolean} [autoCenterH] Automatically center modal horizontally when modal is smaller than viewport width
  * @prop {boolean} [autoCenterV] Automatically center modal vertically when modal is smaller than viewport height
- * @prop {string} [ariaDescribedBy] aria-describedby attribute value
- * @prop {string} [ariaLabel] aria-label attribute value
- * @prop {string} [ariaLabelledBy] aria-labelledby attribute value
+ * @prop {string} [aria-describedby] aria-describedby attribute value
+ * @prop {string} [aria-label] aria-label attribute value
+ * @prop {string} [aria-labelledby] aria-labelledby attribute value
  * @prop {ReactNode} [children] React component children
  * @prop {string} [className] Modal CSS class attribute value to append to default value. Overwritten by modalClassName prop.
  * @prop {string} [closeClassName] Close button class attribute value to append to default value
@@ -90,9 +90,9 @@ const Modal = ({
   allowBgScroll,
   autoCenterH,
   autoCenterV,
-  ariaDescribedBy,
-  ariaLabel,
-  ariaLabelledBy,
+  'aria-describedby': ariaDescribedBy,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   children,
   className,
   closeClassName,
@@ -233,6 +233,7 @@ const Modal = ({
         // Apply keyboard tab trap on modal
         currOverlayEle.addEventListener('keydown', trapTab)
       }
+      // Remove keyboard trap on unmount
       return () => currOverlayEle.removeEventListener('keydown', trapTab)
     }
   }, [disableTabTrap, tabNavStart, tabNavEnd]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -335,7 +336,7 @@ const Modal = ({
       <section className={contentClassNameVal}>{children}</section>
       <button
         type="button"
-        aria-label="Close Modal"
+        aria-label="Close modal"
         onClick={closeModal}
         className={closeClassNameVal}
       >

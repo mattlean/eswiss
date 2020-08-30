@@ -1,9 +1,9 @@
 import React, { MouseEvent, ReactNode } from 'react'
 
 interface Props {
-  ariaDescribedBy?: string
-  ariaLabel?: string
-  ariaLabelledBy?: string
+  'aria-describedby'?: string
+  'aria-label'?: string
+  'aria-labelledby'?: string
   children?: ReactNode
   className?: string
   nodeType?: 'button' | 'input'
@@ -16,9 +16,9 @@ interface Props {
 
 /**
  * Button
- * @prop {string} [ariaDescribedBy] aria-describedby attribute value
- * @prop {string} [ariaLabel] aria-label attribute value
- * @prop {string} [ariaLabelledBy] aria-labelledby attribute value
+ * @prop {string} [aria-describedby] aria-describedby attribute value
+ * @prop {string} [aria-label] aria-label attribute value
+ * @prop {string} [aria-labelledby] aria-labelledby attribute value
  * @prop {ReactNode} [children] React component children
  * @prop {string} [className] CSS class attribute value to append to default value
  * @prop {'button'|'input'} [nodeType='button'] Determine if button is button or input element
@@ -29,9 +29,9 @@ interface Props {
  * @prop {('button' | 'reset' | 'submit')} [type='button'] HTML type attribute
  */
 const Btn = ({
-  ariaDescribedBy,
-  ariaLabel,
-  ariaLabelledBy,
+  'aria-describedby': ariaDescribedBy,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   children,
   className,
   nodeType,
