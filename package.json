@@ -1,6 +1,6 @@
 {
   "name": "eswiss",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "private": false,
   "peerDependencies": {
     "react": "^16.13.1",
