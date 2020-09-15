@@ -34,6 +34,7 @@ export interface Props {
   children?: ReactNode
   className?: string
   closeClassName?: string
+  closeContent?: any
   closeOnOverlayClick?: boolean
   contentClassName?: string
   disableTabTrap?: boolean
@@ -66,6 +67,7 @@ export interface Props {
  * @prop {ReactNode} [children] React component children
  * @prop {string} [className] Modal CSS class attribute value to append to default value. Overwritten by modalClassName prop.
  * @prop {string} [closeClassName] Close button class attribute value to append to default value
+ * @prop {any} [closeContent=='X'] Close button content
  * @prop {boolean} [closeOnOverlayClick] Close modal if overlay is clicked if true
  * @prop {string} [contentClassName] Content class attribute value to append to default value
  * @prop {boolean} [disableTabTrap] Disable tab trap if true
@@ -96,6 +98,7 @@ const Modal = ({
   children,
   className,
   closeClassName,
+  closeContent,
   closeOnOverlayClick,
   contentClassName,
   disableTabTrap,
@@ -331,6 +334,7 @@ const Modal = ({
   }
 
   // Create modal JSX
+  let c = closeContent || 'X'
   const modalContent = (
     <section ref={modalEle} className={modalClassNames.join(' ')} style={s}>
       <section className={contentClassNameVal}>{children}</section>
@@ -340,7 +344,7 @@ const Modal = ({
         onClick={closeModal}
         className={closeClassNameVal}
       >
-        X
+        {c}
       </button>
     </section>
   )
