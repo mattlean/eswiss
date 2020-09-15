@@ -9,11 +9,11 @@ body.disable-bg-scroll {
 
   &.modal-open {
     background: var(--bg);
+    overflow: scroll;
 
     bottom: 0;
     display: block;
     left: 0;
-    overflow: scroll;
     position: fixed;
     right: 0;
     top: 0;

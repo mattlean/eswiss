@@ -2,6 +2,10 @@
 
 # eswiss
 
+<p align="center">
+  <img src="eswiss-logo.jpg" align="center">
+</p>
+
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mattlean/eswiss/blob/master/LICENSE) [![npm](https://img.shields.io/npm/v/eswiss.svg?colorB=brightgreen)](https://npmjs.com/package/eswiss) [![TS Tests](https://github.com/mattlean/eswiss/workflows/TS%20Tests/badge.svg)](https://github.com/mattlean/eswiss/actions)
 
 **eswiss** is design system that uses Swiss design principles as its foundation and adapts them to modern UI development methodologies.
